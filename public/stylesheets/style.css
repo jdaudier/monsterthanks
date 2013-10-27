@@ -83,3 +83,14 @@ footer {
   background-color: #25382f;
   color: #fff;
 }
+.maker {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 100;
+  font-size: 0.9em;
+  padding-top: 120px;
+  text-align: center;
+}
+#codepalette {
+  color: #fff;
+  margin-left: 5px;
+}
