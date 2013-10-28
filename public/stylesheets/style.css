@@ -94,3 +94,18 @@ footer {
   color: #fff;
   margin-left: 5px;
 }
+.monster {
+  cursor: move;
+}
+.monster:hover {
+  border: 2px dashed #9e9e9e;
+}
+.dashboard {
+  float: left;
+}
+.dropzone {
+  float: right;
+  height: 500px;
+  width: 500px;
+  background-color: #f00;
+}

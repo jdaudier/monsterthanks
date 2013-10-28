@@ -4,6 +4,19 @@ $(function domReady() {
     window.location.href = "/new";
   });
 
+  $('.monster').draggable();
+  // $('.monster').resizable();
+
+
+
+
+
+
+
+
+
+
+
 
 
 });
