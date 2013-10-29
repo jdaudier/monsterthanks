@@ -70,7 +70,9 @@ div.foo {
   height: 100px;
   font-size: 3em;
   letter-spacing: 5px;
+  animation-duration: 2s;
   -webkit-animation-duration: 2s;
+  animation-delay: 2000;
   -webkit-animation-delay: 2000;
 }
 .action-btn:hover {
@@ -94,18 +96,44 @@ footer {
   color: #fff;
   margin-left: 5px;
 }
+.glyphicon {
+  font-size: 2.5em;
+  color: #09b39c;
+}
+.glyphicon:hover {
+  color: #0acbb1;
+}
+#sidr {
+  background: #e8e8e8;
+  box-shadow: none;
+  padding: 20px;
+}
+.sidr {
+  width: 320px;
+}
 .monster {
   cursor: move;
+  margin: 10px;
 }
 .monster:hover {
-  border: 2px dashed #9e9e9e;
+  border: 2px dashed #fff;
 }
-.dashboard {
-  float: left;
+.header {
+  font-family: 'Londrina Sketch', cursive;
+  color: #fff;
+  display: inline-block;
+  margin-top: 0;
+  letter-spacing: 2px;
+  word-spacing: 3px;
+  font-size: 4em;
+  margin-left: 60px;
+  animation-duration: 3s;
+  -webkit-animation-duration: 3s;
 }
 .dropzone {
-  float: right;
-  height: 500px;
-  width: 500px;
-  background-color: #f00;
+  padding: 30px 50px 50px;
+  background: #000;
+}
+.dropzone img {
+  width: 1024px;
 }
