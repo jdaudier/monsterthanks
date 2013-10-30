@@ -39,7 +39,7 @@ var io = socketio.listen(server);
 //Create to the DB if it doesn't exist and connect to it
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/monsterthanks');
-var models = require('./models/monsters')
+// var models = require('./models/monsters')
 
 //setup our MongoDB Card collection
 var Card = mongoose.model('Card', {
