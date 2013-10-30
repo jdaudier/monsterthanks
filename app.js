@@ -54,7 +54,7 @@ app.get('/new', function(req, res){
   //Create a new Card document
   var card = new Card({ name: "Test" });
   var id = card._id;
-  var path = "/" + id;
+  var path = "/edit/" + id;
   //Save the Card document
   card.save(function(){
     res.redirect(path);
@@ -62,7 +62,7 @@ app.get('/new', function(req, res){
 });
 
 
-app.get('/:id', function(req, res) {
+app.get('/edit/:id', function(req, res) {
   res.render('card');
 });
 
