@@ -111,6 +111,9 @@ footer {
 .sidr {
   width: 320px;
 }
+.draggable {
+  display: inline-block;
+}
 .monster {
   cursor: move;
   margin: 10px;
@@ -126,9 +129,17 @@ footer {
   letter-spacing: 2px;
   word-spacing: 3px;
   font-size: 4em;
-  margin-left: 60px;
+  margin-left: 25px;
+}
+.notice-me {
+  text-transform: uppercase;
+  display: inline-block;
   animation-duration: 3s;
   -webkit-animation-duration: 3s;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  margin: 0 30px;
+  font-size: 1.4em;
 }
 .dropzone {
   padding: 30px 50px 50px;

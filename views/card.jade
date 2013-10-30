@@ -1,33 +1,60 @@
 extends layout
 
 block content
-  #sidr
-    .monsters
-      img#monster1.monster(src='/images/monsters/monster1.svg', alt='monster', draggable='true')
-      img#monster2.monster(src='/images/monsters/monster2.svg', alt='monster', draggable='true')
-      img#monster3.monster(src='/images/monsters/monster3.svg', alt='monster', draggable='true')
-      img#monster4.monster(src='/images/monsters/monster4.svg', alt='monster', draggable='true')
-      img#monster5.monster(src='/images/monsters/monster5.svg', alt='monster', draggable='true')
-      img#monster6.monster(src='/images/monsters/monster6.svg', alt='monster', draggable='true')
-      img#monster7.monster(src='/images/monsters/monster7.svg', alt='monster', draggable='true')
-      img#monster8.monster(src='/images/monsters/monster8.svg', alt='monster', draggable='true')
-      img#monster9.monster(src='/images/monsters/monster9.svg', alt='monster', draggable='true')
-      img#monster10.monster(src='/images/monsters/monster10.svg', alt='monster', draggable='true')
-      img#monster11.monster(src='/images/monsters/monster11.svg', alt='monster', draggable='true')
-      img#monster12.monster(src='/images/monsters/monster12.svg', alt='monster', draggable='true')
-      img#monster13.monster(src='/images/monsters/monster13.svg', alt='monster', draggable='true')
-      img#monster14.monster(src='/images/monsters/monster14.svg', alt='monster', draggable='true')
-      img#monster15.monster(src='/images/monsters/monster15.svg', alt='monster', draggable='true')
-      img#monster16.monster(src='/images/monsters/monster16.svg', alt='monster', draggable='true')
-      img#monster17.monster(src='/images/monsters/monster17.svg', alt='monster', draggable='true')
-      img#monster18.monster(src='/images/monsters/monster18.svg', alt='monster', draggable='true')
-      img#monster19.monster(src='/images/monsters/monster19.svg', alt='monster', draggable='true')
-      img#monster20.monster(src='/images/monsters/monster20.svg', alt='monster', draggable='true')
-      img#monster21.monster(src='/images/monsters/monster21.svg', alt='monster', draggable='true')
-      img#monster22.monster(src='/images/monsters/monster22.svg', alt='monster', draggable='true')
-      img#monster23.monster(src='/images/monsters/monster23.svg', alt='monster', draggable='true')
-  .dropzone
-    a#open-menu(href='#')
-      span.glyphicon.glyphicon-circle-arrow-left
-    h1.header.animated.tada A monster THANK YOU from all of us!
-    img.background(src='/images/backgrounds/backyard.jpg')
+  .wrapper
+    #sidr
+      .monsters
+        .draggable
+          img.monster(src='/images/monsters/monster1.svg', alt='monster')
+        .draggable
+          img.monster(src='/images/monsters/monster2.svg', alt='monster')
+        .draggable
+          img.monster(src='/images/monsters/monster3.svg', alt='monster')
+        .draggable
+          img.monster(src='/images/monsters/monster4.svg', alt='monster')
+        .draggable
+          img.monster(src='/images/monsters/monster5.svg', alt='monster')
+        .draggable
+          img.monster(src='/images/monsters/monster6.svg', alt='monster')
+        .draggable
+          img.monster(src='/images/monsters/monster7.svg', alt='monster')
+        .draggable
+          img.monster(src='/images/monsters/monster8.svg', alt='monster')
+        .draggable
+          img.monster(src='/images/monsters/monster9.svg', alt='monster')
+        .draggable
+          img.monster(src='/images/monsters/monster10.svg', alt='monster')
+        .draggable
+          img.monster(src='/images/monsters/monster11.svg', alt='monster')
+        .draggable
+          img.monster(src='/images/monsters/monster12.svg', alt='monster')
+        .draggable
+          img.monster(src='/images/monsters/monster13.svg', alt='monster')
+        .draggable
+          img.monster(src='/images/monsters/monster14.svg', alt='monster')
+        .draggable
+          img.monster(src='/images/monsters/monster15.svg', alt='monster')
+        .draggable
+          img.monster(src='/images/monsters/monster16.svg', alt='monster')
+        .draggable
+          img.monster(src='/images/monsters/monster17.svg', alt='monster')
+        .draggable
+          img.monster(src='/images/monsters/monster18.svg', alt='monster')
+        .draggable
+          img.monster(src='/images/monsters/monster19.svg', alt='monster')
+        .draggable
+          img.monster(src='/images/monsters/monster20.svg', alt='monster')
+        .draggable
+          img.monster(src='/images/monsters/monster21.svg', alt='monster')
+        .draggable
+          img.monster(src='/images/monsters/monster22.svg', alt='monster')
+        .draggable
+          img.monster(src='/images/monsters/monster23.svg', alt='monster')
+    .dropzone
+      a#open-menu(href='#')
+        span.glyphicon.glyphicon-circle-arrow-left
+      h1.header
+        | A monster
+        span.animated.tada.notice-me thank you
+        | from all of us!
+      img.background(src='/images/backgrounds/backyard.jpg')

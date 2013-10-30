@@ -8,7 +8,7 @@ var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
-var mongoose = require('mongoose');
+var socketio = require('socket.io');
 
 var app = express();
 
@@ -29,9 +29,17 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-// MongoDB
+// Create the server
+var server = http.createServer(app);
+
+//Start the web socket server
+var io = socketio.listen(server);
+
+// Mongoose
 //Create to the DB if it doesn't exist and connect to it
+var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/monsterthanks');
+var models = require('./models/monsters')
 
 //setup our MongoDB Card collection
 var Card = mongoose.model('Card', {
@@ -59,6 +67,43 @@ app.get('/:id', function(req, res) {
 
 
 
-http.createServer(app).listen(app.get('port'), function(){
+io.sockets.on('connection', function(socket) {
+  // users[socket.id] = socket.id;
+
+  // io.sockets.emit('connectedMsg', {
+  //   user: users[socket.id],
+  //   message: " just joined the room!"
+  // });
+  // //socket is the specific connection that's fired
+  // socket.on('clientMsg', function(message){
+  //   io.sockets.emit('serverMsg', {
+  //     user: users[socket.id],
+  //     message: message
+  //   });
+  // });
+
+  // socket.on('disconnect', function () {
+  //   io.sockets.emit('disconnectedMsg', {
+  //   user: users[socket.id],
+  //   message: " just left the room. Boo!"});
+  //   delete users[socket.id];
+  //   io.sockets.emit('users', users);
+  // });
+
+  // socket.on('username', function(username) {
+  //   users[socket.id] = username;
+  //   io.sockets.emit('users', users);
+  // });
+
+  // io.sockets.emit('users', users);
+
+});
+
+
+// http.createServer(app).listen(app.get('port'), function(){
+//   console.log('Express server listening on port ' + app.get('port'));
+// });
+
+server.listen(3000, function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
