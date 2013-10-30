@@ -15,13 +15,7 @@ $(function domReady() {
 
   // $('.dropzone').droppable({ accept: '.draggable' });
 
-  // $('img').resizable().parent().draggable();
-
-  //  $('.monster').resizable({
-  //     aspectRatio: true,
-  //     handles: 'ne, se, sw, nw'
-  // });
-
+   $('.monster').resizable();
 
 
 
