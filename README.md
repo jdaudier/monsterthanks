@@ -31,6 +31,7 @@ Monster Thanks is an interactive thank you card that enables _real-time_ collabo
 
 ### Bonus (if I have time)
 * Ability to change out the font style for "A monster thanks from all of us" header message
+* Dynamically inserting recipient's first name in header message
 * Copy link feature (like GitHub)
 * Send email with link to other participants
 * Send email with link to recipient
