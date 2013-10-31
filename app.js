@@ -40,19 +40,16 @@ var io = socketio.listen(server);
 var mongoose = require('mongoose');
 mongoURI = process.env.MONGOHQ_URL || 'mongodb://localhost/monsterthanks';
 mongoose.connect(mongoURI);
-// var models = require('./models/monsters')
-
 //setup our MongoDB Card collection
-var Card = mongoose.model('Card', {
-  name: String
-});
+var models = require('./models/cards');
+
 
 app.get('/', routes.index);
 // app.get('/users', user.list);
 
 app.get('/new', function(req, res){
   //Create a new Card document
-  var card = new Card({ name: "Test" });
+  var card = new Card({ monsters: [], background: "backyard.jpg" });
   var id = card._id;
   var path = "/edit/" + id;
   //Save the Card document
@@ -65,8 +62,6 @@ app.get('/new', function(req, res){
 app.get('/edit/:id', function(req, res) {
   res.render('card');
 });
-
-
 
 io.sockets.on('connection', function(socket) {
   // users[socket.id] = socket.id;
@@ -101,9 +96,6 @@ io.sockets.on('connection', function(socket) {
 });
 
 
-// http.createServer(app).listen(app.get('port'), function(){
-//   console.log('Express server listening on port ' + app.get('port'));
-// });
 
 server.listen(3000, function(){
   console.log('Express server listening on port ' + app.get('port'));
