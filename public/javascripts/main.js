@@ -15,7 +15,7 @@ $(function domReady() {
         var monstersPosition = $(this).position();
         // 23 objects
         console.log(monstersPosition);
-        // socket.emit('monstersPosition', monstersPosition);
+        socket.emit('monstersPosition', monstersPosition);
       });
     });
   });

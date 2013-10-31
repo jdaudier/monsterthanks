@@ -1,20 +1,22 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var bubbleSchema = new Schema({
-  top: Number,
-  left: Number
-});
+// var bubbleSchema = new Schema({
+//   top: Number,
+//   left: Number
+// });
 
-var Bubble = mongoose.model('Bubble', bubbleSchema);
+// var Bubble = mongoose.model('Bubble', bubbleSchema);
 
 var monsterSchema = new Schema({
   top: Number,
   left: Number,
   width: Number,
   height: Number,
-  speechBubble: [bubbleSchema]
+  speechBubble: {top : Number, left : Number}
 });
+
+// speechBubble.top to write to it
 
 var Monster = mongoose.model('Monster', monsterSchema);
 
