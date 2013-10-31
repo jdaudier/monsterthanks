@@ -1,18 +1,18 @@
-var socket = io.connect();
+// var socket = io.connect();
 
 $(function domReady() {
 
-  socket.on('connect', function(){
+  // socket.on('connect', function(){
     // Gets position of all monsters after opening the closet
-    $('#open-closet').click(function(){
-      $('.draggable').each(function(){
-        var monstersPosition = $(this).position();
-      });
-      socket.emit('monstersPosition', monstersPosition);
-        console.log(monstersPosition);
-    });
+  //   $('#open-closet').click(function(){
+  //     $('.draggable').each(function(){
+  //       var monstersPosition = $(this).position();
+  //     });
+  //     socket.emit('monstersPosition', monstersPosition);
+  //       console.log(monstersPosition);
+  //   });
 
-  });
+  // });
 
 
   $('.action-btn').click(function(e) {

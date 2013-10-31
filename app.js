@@ -49,7 +49,7 @@ app.get('/', routes.index);
 
 app.get('/new', function(req, res){
   //Create a new Card document
-  var card = new Card({ monsters: [], background: "backyard.jpg" });
+  var card = new models.Card({ monsters: [], background: "backyard.jpg" });
   var id = card._id;
   var path = "/edit/" + id;
   //Save the Card document
