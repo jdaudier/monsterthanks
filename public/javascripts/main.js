@@ -6,7 +6,8 @@ $(function domReady() {
     window.location.href = "/new";
   });
 
-  $('#open-closet').sidr();
+  $.localScroll();
+
 
   // $('#open-closet').click(function(){
   //   $('.draggable').each(function(){
@@ -32,7 +33,6 @@ $(function domReady() {
   // Gets position of a monster after dragstop
   $('.draggable').draggable({
     scroll: true,
-    // appendTo: 'body',
     containment: 'window',
     start: function( event, ui ) {
       // var $sidr = $(this).parents('.sidr');
@@ -48,11 +48,10 @@ $(function domReady() {
 
   // Gets size of monster after resizing
   $('.monster').resizable({
-    start: function( event, ui ) {
-      var $monsterContainer = $(this).parents('.monster-container');
-      // $monsterContainer.empty();
-      // $monsterContainer.css("height", "100");
-    },
+    // start: function( event, ui ) {
+    //   var $monsterContainer = $(this).parents('.monster-container');
+    //   $monsterContainer.css("height", "100");
+    // },
     stop: function( event, ui ) {
       var width = $(this).width();
       var height = $(this).height();

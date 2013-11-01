@@ -97,45 +97,23 @@ footer {
   margin-left: 5px;
 }
 .glyphicon {
-  font-size: 2.5em;
+  font-size: 0.9em;
   color: #09b39c;
+  margin-left: 20px;
 }
 .glyphicon:hover {
   color: #0acbb1;
 }
-#sidr {
-  background: #e8e8e8;
-  box-shadow: none;
-  padding: 20px;
-  width: 320px;
-}
-.sidr {
-  overflow-y: visible;
-}
-.monster-container {
-  display: inline-block;
-  width: 110px;
-  height: 110px;
-  margin: 5px;
-}
-.monster {
-  cursor: move;
-  margin: 10px;
-  width: 100%;
-  height: 100%;
-}
-.monster:hover {
-  border: 2px dashed #fff;
-}
 .header {
   font-family: 'Londrina Sketch', cursive;
   color: #fff;
-  display: inline-block;
-  margin-top: 0;
   letter-spacing: 2px;
   word-spacing: 3px;
   font-size: 4em;
-  margin-left: 25px;
+  padding: 0;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 .notice-me {
   text-transform: uppercase;
@@ -148,9 +126,42 @@ footer {
   font-size: 1.4em;
 }
 .dropzone {
-  padding: 30px 50px 50px;
+  padding: 20px 40px 40px;
   background: #000;
 }
 .dropzone img {
-  width: 1024px;
+  width: 100%;
+  border-radius: 6px;
+  border: 6px solid #fff;
+}
+#closet {
+  background: #fff;
+  padding: 40px;
+}
+.monster-container {
+  background: #e8e8e8;
+  border-radius: 6px;
+  padding: 10px;
+  border: 6px solid #09b39c;
+}
+.closet-header {
+  font-family: 'Londrina Sketch', cursive;
+  color: #089b87;
+  letter-spacing: 2px;
+  font-size: 5em;
+  width: 150px;
+  margin: 0 auto;
+}
+.draggable {
+  display: inline-block;
+  margin: 10px;
+}
+.monster {
+  cursor: move;
+  margin: 10px;
+  width: 100px;
+  height: 100px;
+}
+.monster:hover {
+  border: 2px dashed #fff;
 }
