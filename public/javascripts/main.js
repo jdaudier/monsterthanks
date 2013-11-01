@@ -67,7 +67,15 @@ $(function domReady() {
   //   }
   // });
 
-  $(".draggable").dblclick(function() {
+  $(".draggable").dblclick(function(e) {
+    // e.target = monster img
+    if ($(e.target).hasClass("bubble")===true) {
+      alert("hi")
+    }
+
+    if ($(e.target).hasClass("monster")===false || $(this).hasClass("has-bubble")===true) {
+      return false;
+    }
     var source = $("#speech-bubble").html();
     var bubbleTemplate = Handlebars.compile (source);
     var messageObj = {
@@ -75,6 +83,7 @@ $(function domReady() {
     };
     bubbleTemplate = bubbleTemplate(messageObj);
     $(bubbleTemplate).prependTo($(this));
+    $(this).addClass("has-bubble");
     $(".draggable-bubble").draggable({
       scroll: true,
       containment: ".background",
@@ -88,7 +97,6 @@ $(function domReady() {
       }
     });
   });
-
 
 
 

@@ -49,7 +49,7 @@ app.get('/', routes.index);
 
 app.get('/new', function(req, res){
   //Create a new Card document
-  var card = new models.Card({});
+  var card = new models.Card();
 
   // Write their location and size
   // Drag or resize event - update DB
