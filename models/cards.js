@@ -20,6 +20,7 @@ var monsterSchema = new Schema({
 
 var Monster = mongoose.model('Monster', monsterSchema);
 
+// Initialize 50 monsters whenever a Card is created
 var Card = mongoose.model('Card', {
   monsters: {
     type: [monsterSchema],
@@ -30,7 +31,7 @@ var Card = mongoose.model('Card', {
       }
       return monstersArray;
     },
-    background: String
+    background: {type: String, default: "backyard.jpg"}
   }
 });
 

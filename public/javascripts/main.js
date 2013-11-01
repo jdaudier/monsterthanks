@@ -40,6 +40,18 @@ $(function domReady() {
     }
   });
 
+
+
+// var $this = $(this), offset = $this.offset(),
+//     width = $this.innerWidth(), height = $this.innerHeight();
+// var parentOffset = $(this).offset();
+// var relativeXPosition = (e.pageX - parentOffset.left),
+//     percentx = relativeXPosition/width;
+// var relativeYPosition = (e.pageY - parentOffset.top),
+//     percenty = relativeYPosition/height;
+
+
+
   // Gets size of monster after resizing
   $(".monster").resizable({
     stop: function( event, ui ) {
