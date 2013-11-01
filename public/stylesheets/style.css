@@ -99,7 +99,7 @@ footer {
 .glyphicon {
   font-size: 0.9em;
   color: #09b39c;
-  margin-left: 20px;
+  margin-left: 40px;
 }
 .glyphicon:hover {
   color: #0acbb1;
@@ -110,9 +110,8 @@ footer {
   letter-spacing: 2px;
   word-spacing: 3px;
   font-size: 4em;
+  display: inline-block;
   padding: 0;
-  width: 90%;
-  margin: 0 auto;
   margin-bottom: 20px;
 }
 .notice-me {
@@ -128,6 +127,7 @@ footer {
 .dropzone {
   padding: 20px 40px 40px;
   background: #000;
+  text-align: center;
 }
 .dropzone img {
   width: 100%;
@@ -143,14 +143,14 @@ footer {
   border-radius: 6px;
   padding: 10px;
   border: 6px solid #09b39c;
+  text-align: center;
 }
 .closet-header {
   font-family: 'Londrina Sketch', cursive;
   color: #089b87;
   letter-spacing: 2px;
   font-size: 5em;
-  width: 150px;
-  margin: 0 auto;
+  display: inline-block;
 }
 .draggable {
   display: inline-block;
