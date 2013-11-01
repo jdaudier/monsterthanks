@@ -134,10 +134,12 @@ footer
   background black
   text-align center
 
-.dropzone img
-  width 100%
+.background
   border-radius 6px
   border 6px solid white
+  min-height 1024px
+  background url(../images/backgrounds/backyard.jpg) no-repeat
+  background-size cover
 
 #closet
   background white
@@ -170,3 +172,27 @@ footer
 .monster:hover
   border 2px dashed white
 
+.bubble
+  cursor move
+
+.bubble:hover
+  border 2px dashed gray
+
+.bubble
+  position relative
+  padding 20px
+  background light-gray
+  -webkit-border-radius 6px
+  -moz-border-radius 6px
+  border-radius 6px
+  &:after
+    content ""
+    position absolute
+    bottom -24px
+    left 52px
+    border-style solid
+    border-width 24px 15px 0
+    border-color light-gray transparent
+    display block
+    width 0
+    z-index 1
