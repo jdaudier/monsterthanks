@@ -35,7 +35,7 @@ $(function domReady() {
     // },
     stop: function( event, ui ) {
       var location = $(this).offset();
-      console.log(location);
+      // console.log(location);
       // Returns: Object {top: 378.3999938964844, left: 152}
     }
   });
@@ -49,8 +49,6 @@ $(function domReady() {
 //     percentx = relativeXPosition/width;
 // var relativeYPosition = (e.pageY - parentOffset.top),
 //     percenty = relativeYPosition/height;
-
-
 
   // Gets size of monster after resizing
   $(".monster").resizable({
@@ -69,9 +67,9 @@ $(function domReady() {
 
   $(".draggable").dblclick(function(e) {
     // e.target = monster img
-    if ($(e.target).hasClass("bubble")===true) {
-      alert("hi")
-    }
+    // if ($(e.target).hasClass("bubble")===true) {
+    //   alert("hi")
+    // }
 
     if ($(e.target).hasClass("monster")===false || $(this).hasClass("has-bubble")===true) {
       return false;
@@ -79,7 +77,7 @@ $(function domReady() {
     var source = $("#speech-bubble").html();
     var bubbleTemplate = Handlebars.compile (source);
     var messageObj = {
-      message: "This is a thank you message"
+      defaultMsg: "Enter your message"
     };
     bubbleTemplate = bubbleTemplate(messageObj);
     $(bubbleTemplate).prependTo($(this));
@@ -96,7 +94,20 @@ $(function domReady() {
         // Returns: Object {top: 378.3999938964844, left: 152}
       }
     });
+    $(document).on("blur", ".message", function() {
+      $el = $(this);
+      var message = $el.val();
+      $el.parent().text(message);
+    });
   });
+
+  // $('.message').on('keyup', function(e) {
+  //   $el = $(this);
+  //   if(e.which === 13) {
+  //     socket.emit('message', $el.val());
+  //   }
+  // });
+
 
 
 
