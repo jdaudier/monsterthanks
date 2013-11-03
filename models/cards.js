@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var monsterSchema = new Schema({
+  monsterId: Number,
   top: Number,
   left: Number,
   width: {type: Number, default: 100},
@@ -27,8 +28,8 @@ var cardSchema = new Schema({
 cardSchema.path('monsters').default(function(){
   var monstersArray = [];
   for (var i = 1; i < 51; i++) {
-    monstersArray.push(new Monster({}));
-    console.log(monstersArray);
+    monstersArray.push(new Monster({monsterId: i}));
+    // console.log(monstersArray);
   }
   return monstersArray;
 });

@@ -22,24 +22,26 @@ $(function domReady() {
   //   console.log("height: ", height);
   // });
 
-  // socket.on("connect", function(){
-    // socket.emit("monstersPosition", monstersPosition);
-  // });
+  socket.on("connect", function(){
+    // Gets position of a monster after dragstop
+    $(".draggable").draggable({
+      scroll: true,
+      containment: "window",
+      // start: function( event, ui ) {
 
-  // Gets position of a monster after dragstop
-  $(".draggable").draggable({
-    scroll: true,
-    containment: "window",
-    // start: function( event, ui ) {
+      // },
+      stop: function( event, ui ) {
+        var location = $(this).offset();
+        // console.log(location);
+        // Returns: Object {top: 378.3999938964844, left: 152}
+        // User event target
+        var monsterId = $(this).find(".monster").data("id");
+        socket.emit("monsterPosition", location);
+      }
+    });
 
-    // },
-    stop: function( event, ui ) {
-      var location = $(this).offset();
-      // console.log(location);
-      // Returns: Object {top: 378.3999938964844, left: 152}
-    }
+    // socket.emit("monsterPosition", monsterPosition);
   });
-
 
 
 // var $this = $(this), offset = $this.offset(),

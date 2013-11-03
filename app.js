@@ -65,7 +65,13 @@ app.get('/new', function(req, res){
 
 
 app.get('/edit/:id', function(req, res) {
-  res.render('card');
+  var Card = mongoose.model("Card", models.cardSchema);
+
+  Card.find({_id: req.params.id}, function(err, data){
+    res.render('card', data[0]);
+    // console.log(data[0]);
+  });
+
 });
 
 io.sockets.on('connection', function(socket) {
@@ -91,10 +97,10 @@ io.sockets.on('connection', function(socket) {
   //   io.sockets.emit('users', users);
   // });
 
-  // socket.on('username', function(username) {
-  //   users[socket.id] = username;
-  //   io.sockets.emit('users', users);
-  // });
+  socket.on('monsterPosition', function(data) {
+    console.log(data);
+    // io.sockets.emit('users', users);
+  });
 
   // io.sockets.emit('users', users);
 
