@@ -8,18 +8,11 @@ $(function domReady() {
 
   $.localScroll();
 
-  $(".draggable").each(function(){
-    var monstersPosition = $(this).position();
-    var windowWidth = $(window).width();
+  // $(".draggable").each(function(){
+  //   var monstersPosition = $(this).position();
+
     // console.log(monstersPosition);
     // console.log(windowWidth);
-  });
-
-  // $(".monster").each(function(){
-  //   var width = $(this).width();
-  //   var height = $(this).height();
-  //   console.log("width: ", width);
-  //   console.log("height: ", height);
   // });
 
   socket.on("connect", function(){
@@ -31,16 +24,22 @@ $(function domReady() {
 
       // },
       stop: function( event, ui ) {
-        var location = $(this).offset();
-        // console.log(location);
-        // Returns: Object {top: 378.3999938964844, left: 152}
-        // User event target
+        var top = $(this).offset().top;
+        var left = $(this).offset().left;
+        var docWidth = $(document).width();
+        var docHeight = $(document).height();
+        var leftPercent = left / docWidth * 100;
+        var topPercent = top / docHeight * 100;
+        console.log("top: ", top);
+        console.log("left: ", left);
+        console.log("top%: ", topPercent);
+        console.log("left%: ", leftPercent);
+
         var monsterId = $(this).find(".monster").data("id");
+
         socket.emit("monsterPosition", location);
       }
     });
-
-    // socket.emit("monsterPosition", monsterPosition);
   });
 
 
@@ -57,6 +56,8 @@ $(function domReady() {
     stop: function( event, ui ) {
       var width = $(this).width();
       var height = $(this).height();
+      var windowWidth = $(window).width();
+      var monsterId = $(this).find(".monster").data("id");
       // console.log(width);
       // console.log(height);
     }
@@ -97,9 +98,12 @@ $(function domReady() {
       }
     });
     $(document).on("blur", ".message", function() {
-      $el = $(this);
+      $el = $(this); // This is the textarea
       var message = $el.val();
       $el.parent().text(message);
+      // console.log($el.parent());
+      // var monsterId = $(this).closest(".draggable");
+      // I have issue getting the monsterId
     });
   });
 
