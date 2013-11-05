@@ -18,8 +18,11 @@ $(function domReady() {
 
       // },
       stop: function( event, ui ) {
-        var top = $(this).offset().top;
-        var left = $(this).offset().left;
+        console.log(event);
+        console.log(ui);
+
+        var top = ui.offset.top;
+        var left = ui.offset.left;
         var docHeight = $(document).height();
         var docWidth = $(document).width();
         var topPercent = top / docHeight * 100;
@@ -47,8 +50,8 @@ $(function domReady() {
   // Gets size of monster after resizing
   $(".monster").resizable({
     stop: function( event, ui ) {
-      var width = $(this).width();
-      var height = $(this).height();
+      var width = ui.size.width;
+      var height = ui.size.height;
       var docWidth = $(document).width();
       var docHeight = $(document).height();
       var widthPercent = width / docWidth * 100;
@@ -56,10 +59,10 @@ $(function domReady() {
       var monsterId = $(this).find(".monster").data("id");
       console.log("resized width: ", width);
       console.log("resized height: ",height);
-      console.log("docWidth: ",docWidth);
-      console.log("docHeight: ",docHeight);
-      console.log("resized widthPercent: ",widthPercent);
-      console.log("resized heightPercent: ",heightPercent);
+      console.log("docWidth: ", docWidth);
+      console.log("docHeight: ", docHeight);
+      console.log("resized widthPercent: ", widthPercent);
+      console.log("resized heightPercent: ", heightPercent);
       var cardId = $(this).find(".monster").data("card-id");
 
       var resizedMonster = {
@@ -108,8 +111,8 @@ $(function domReady() {
       // },
       stop: function( event, ui ) {
         // $(this) = bubble div
-        var top = $(this).offset().top;
-        var left = $(this).offset().left;
+        var top = ui.offset.top;
+        var left = ui.offset.left;
         var docHeight = $(document).height();
         var docWidth = $(document).width();
         var topPercent = top / docHeight * 100;

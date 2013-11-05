@@ -171,6 +171,7 @@ footer {
   cursor: move;
   display: inline-block;
   margin-bottom: 18px;
+  width: 250px;
 }
 .bubble:hover {
   border: 2px dashed #9e9e9e;

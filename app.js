@@ -149,7 +149,8 @@ io.sockets.on('connection', function(socket) {
     Card.findOne({_id: messageEntered.id}, function(err, card){
       for (var i = 0; i < card.monsters.length; i++) {
         if (card.monsters[i].monsterId === messageEntered.monsterId) {
-          card.monsters[i].speechBubble.message = messageEntered.message;
+          card.monsters[i].speechBubble.top = messageEntered.top;
+          card.monsters[i].speechBubble.left = messageEntered.left;
           console.log("found monster: ", card.monsters[i]);
           card.save();
           // io.sockets.emit('users', users);
