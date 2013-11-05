@@ -2,18 +2,13 @@ var socket = io.connect();
 
 $(function domReady() {
 
+  // Creates a new Card
   $(".action-btn").click(function(e) {
     window.location.href = "/new";
   });
 
   $.localScroll();
 
-  // $(".draggable").each(function(){
-  //   var monstersPosition = $(this).position();
-
-    // console.log(monstersPosition);
-    // console.log(windowWidth);
-  // });
 
   socket.on("connect", function(){
     // Gets position of a monster after dragstop
@@ -28,28 +23,27 @@ $(function domReady() {
         var left = $(this).offset().left;
         var docWidth = $(document).width();
         var docHeight = $(document).height();
-        var leftPercent = left / docWidth * 100;
         var topPercent = top / docHeight * 100;
+        var leftPercent = left / docWidth * 100;
         console.log("top: ", top);
         console.log("left: ", left);
         console.log("top%: ", topPercent);
         console.log("left%: ", leftPercent);
 
         var monsterId = $(this).find(".monster").data("id");
+        var cardId = $(this).find(".monster").data("card-id");
 
-        socket.emit("monsterPosition", location);
+        var draggedMonster = {
+          id: cardId,
+          monsterId: monsterId,
+          top: topPercent,
+          left: leftPercent
+        };
+
+        socket.emit("draggedMonster", draggedMonster);
       }
     });
   });
-
-
-// var $this = $(this), offset = $this.offset(),
-//     width = $this.innerWidth(), height = $this.innerHeight();
-// var parentOffset = $(this).offset();
-// var relativeXPosition = (e.pageX - parentOffset.left),
-//     percentx = relativeXPosition/width;
-// var relativeYPosition = (e.pageY - parentOffset.top),
-//     percenty = relativeYPosition/height;
 
   // Gets size of monster after resizing
   $(".monster").resizable({
@@ -100,7 +94,7 @@ $(function domReady() {
     $(document).on("blur", ".message", function() {
       $el = $(this); // This is the textarea
       var message = $el.val();
-      $el.parent().text(message);
+      $el.parent().parent().text(message);
       // console.log($el.parent());
       // var monsterId = $(this).closest(".draggable");
       // I have issue getting the monsterId

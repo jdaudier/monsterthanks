@@ -21,6 +21,6 @@ block content
 
         each monster, i in monsters
           .draggable
-            img.monster(src='/images/monsters/monster' + monster.monsterId + '.svg', alt='monster' data-id=monster.monsterId)
+            img.monster(src='/images/monsters/monster' + monster.monsterId + '.svg', alt='monster' data-id=monster.monsterId, data-card-id=id)
 
     include speechbubble.html

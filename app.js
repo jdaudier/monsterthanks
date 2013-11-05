@@ -43,6 +43,7 @@ mongoose.connect(mongoURI);
 //setup our MongoDB Card collection
 var models = require('./models/cards');
 
+var Card = mongoose.model("Card", models.cardSchema);
 
 app.get('/', routes.index);
 // app.get('/users', user.list);
@@ -58,18 +59,22 @@ app.get('/new', function(req, res){
   var id = card._id;
   var path = "/edit/" + id;
   //Save the Card document
-  card.save(function(){
-    res.redirect(path);
+  card.save(function(err){
+    if (err) {
+      console.log(card);
+      console.log(err);
+      res.send(500, "Card is not saved");
+    }
+    else {
+      res.redirect(path);
+    }
   });
 });
 
 
 app.get('/edit/:id', function(req, res) {
-  var Card = mongoose.model("Card", models.cardSchema);
-
-  Card.find({_id: req.params.id}, function(err, data){
-    res.render('card', data[0]);
-    // console.log(data[0]);
+  Card.findOne({_id: req.params.id}, function(err, data){
+    res.render('card', data);
   });
 
 });
@@ -97,16 +102,32 @@ io.sockets.on('connection', function(socket) {
   //   io.sockets.emit('users', users);
   // });
 
-  socket.on('monsterPosition', function(data) {
-    console.log(data);
+  socket.on('draggedMonster', function(draggedMonster) {
+
+    Card.findOne({_id: draggedMonster.id}, function(err, card){
+      for (var i = 0; i < card.monsters.length; i++) {
+        if (card.monsters[i].monsterId === draggedMonster.monsterId) {
+          card.monsters[i].top = draggedMonster.top;
+          card.monsters[i].left = draggedMonster.left;
+          card.monsters[i].width = 200;
+          console.log("found monster: ", card.monsters[i]);
+          card.save();
+        }
+      }
+    });
+
+
+
+
     // io.sockets.emit('users', users);
   });
 
   // io.sockets.emit('users', users);
+  // emit it being dragged
 
-});
 
 
+}); // Socket connection closed
 
 server.listen(3000, function(){
   console.log('Express server listening on port ' + app.get('port'));

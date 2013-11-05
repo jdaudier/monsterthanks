@@ -19,25 +19,23 @@ var monsterSchema = new Schema({
 var Monster = mongoose.model('Monster', monsterSchema);
 
 var cardSchema = new Schema({
-  monsters: {type: Schema.Types.Mixed},
+  monsters: {type: [monsterSchema], default: []},
   background: {type: String, default: "backyard.jpg"},
   createdAt: {
     type: Date,
-    default: function() {
-      return new Date();
-    }
+    default: Date.now
   }
 });
 
 // Initialize 50 monsters whenever a Card is created
-
-cardSchema.path('monsters').default(function(){
-  var monstersArray = [];
-  for (var i = 1; i < 51; i++) {
-    monstersArray.push(new Monster({monsterId: i}));
-    // console.log(monstersArray);
+cardSchema.pre("save", function(next) {
+  // this = cardSchema
+  for (var i = 0; i < 50; i++) {
+    this.monsters.push(new Monster({monsterId: i}));
   }
-  return monstersArray;
+
+  next();
+
 });
 
 var Card = mongoose.model('Card', cardSchema);
