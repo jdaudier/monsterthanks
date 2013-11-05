@@ -27,17 +27,8 @@ var cardSchema = new Schema({
   }
 });
 
-// Initialize 50 monsters whenever a Card is created
-cardSchema.pre("save", function(next) {
-  // this = cardSchema
-  for (var i = 0; i < 50; i++) {
-    this.monsters.push(new Monster({monsterId: i}));
-  }
-
-  next();
-
-});
 
 var Card = mongoose.model('Card', cardSchema);
 
+exports.Monster = Monster;
 exports.Card = Card;

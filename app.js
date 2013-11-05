@@ -40,10 +40,12 @@ var io = socketio.listen(server);
 var mongoose = require('mongoose');
 mongoURI = process.env.MONGOHQ_URL || 'mongodb://localhost/monsterthanks';
 mongoose.connect(mongoURI);
+
 //setup our MongoDB Card collection
 var models = require('./models/cards');
 
 var Card = mongoose.model("Card", models.cardSchema);
+var Monster = mongoose.model("Monster", models.monsterSchema);
 
 app.get('/', routes.index);
 // app.get('/users', user.list);
@@ -52,9 +54,10 @@ app.get('/new', function(req, res){
   //Create a new Card document
   var card = new models.Card();
 
-  // Write their location and size
-  // Drag or resize event - update DB
-  // Mongoose $push to add to the monsters array
+  // Initialize 50 monsters whenever a Card is created
+  for (var i = 0; i < 50; i++) {
+    card.monsters.push(new Monster({monsterId: i}));
+  }
 
   var id = card._id;
   var path = "/edit/" + id;
@@ -109,25 +112,35 @@ io.sockets.on('connection', function(socket) {
         if (card.monsters[i].monsterId === draggedMonster.monsterId) {
           card.monsters[i].top = draggedMonster.top;
           card.monsters[i].left = draggedMonster.left;
-          card.monsters[i].width = 200;
           console.log("found monster: ", card.monsters[i]);
           card.save();
+          // io.sockets.emit('users', users);
+          // emit it being dragged
         }
       }
     });
-
-
-
-
-    // io.sockets.emit('users', users);
   });
 
-  // io.sockets.emit('users', users);
-  // emit it being dragged
+  socket.on('resizedMonster', function(resizedMonster) {
+
+    Card.findOne({_id: resizedMonster.id}, function(err, card){
+      for (var i = 0; i < card.monsters.length; i++) {
+        if (card.monsters[i].monsterId === resizedMonster.monsterId) {
+          card.monsters[i].width = resizedMonster.width;
+          card.monsters[i].height = resizedMonster.height;
+          console.log("found monster: ", card.monsters[i]);
+          card.save();
+          // io.sockets.emit('users', users);
+          // emit it being resized
+        }
+      }
+    });
+  });
 
 
 
-}); // Socket connection closed
+
+}); // Socket connection CLOSES
 
 server.listen(3000, function(){
   console.log('Express server listening on port ' + app.get('port'));

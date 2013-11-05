@@ -21,14 +21,14 @@ $(function domReady() {
       stop: function( event, ui ) {
         var top = $(this).offset().top;
         var left = $(this).offset().left;
-        var docWidth = $(document).width();
         var docHeight = $(document).height();
+        var docWidth = $(document).width();
         var topPercent = top / docHeight * 100;
         var leftPercent = left / docWidth * 100;
-        console.log("top: ", top);
-        console.log("left: ", left);
-        console.log("top%: ", topPercent);
-        console.log("left%: ", leftPercent);
+        // console.log("top: ", top);
+        // console.log("left: ", left);
+        // console.log("top%: ", topPercent);
+        // console.log("left%: ", leftPercent);
 
         var monsterId = $(this).find(".monster").data("id");
         var cardId = $(this).find(".monster").data("card-id");
@@ -50,10 +50,28 @@ $(function domReady() {
     stop: function( event, ui ) {
       var width = $(this).width();
       var height = $(this).height();
-      var windowWidth = $(window).width();
+      var docWidth = $(document).width();
+      var docHeight = $(document).height();
+      var widthPercent = width / docWidth * 100;
+      var heightPercent = height / docHeight * 100;
       var monsterId = $(this).find(".monster").data("id");
-      // console.log(width);
-      // console.log(height);
+      console.log("width: ", width);
+      console.log("height: ",height);
+      console.log("docWidth: ",docWidth);
+      console.log("docHeight: ",docHeight);
+      console.log("widthPercent: ",widthPercent);
+      console.log("heightPercent: ",heightPercent);
+      var cardId = $(this).find(".monster").data("card-id");
+
+      var resizedMonster = {
+        id: cardId,
+        monsterId: monsterId,
+        width: widthPercent,
+        height: heightPercent
+      };
+
+      socket.emit("resizedMonster", resizedMonster);
+
     }
   });
 
