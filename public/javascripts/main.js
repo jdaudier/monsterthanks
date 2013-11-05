@@ -24,10 +24,10 @@ $(function domReady() {
         var docWidth = $(document).width();
         var topPercent = top / docHeight * 100;
         var leftPercent = left / docWidth * 100;
-        // console.log("top: ", top);
-        // console.log("left: ", left);
-        // console.log("top%: ", topPercent);
-        // console.log("left%: ", leftPercent);
+        console.log("dragged top: ", top);
+        console.log("dragged left: ", left);
+        console.log("dragged top%: ", topPercent);
+        console.log("dragged left%: ", leftPercent);
 
         var monsterId = $(this).find(".monster").data("id");
         var cardId = $(this).find(".monster").data("card-id");
@@ -54,12 +54,12 @@ $(function domReady() {
       var widthPercent = width / docWidth * 100;
       var heightPercent = height / docHeight * 100;
       var monsterId = $(this).find(".monster").data("id");
-      // console.log("width: ", width);
-      // console.log("height: ",height);
-      // console.log("docWidth: ",docWidth);
-      // console.log("docHeight: ",docHeight);
-      // console.log("widthPercent: ",widthPercent);
-      // console.log("heightPercent: ",heightPercent);
+      console.log("resized width: ", width);
+      console.log("resized height: ",height);
+      console.log("docWidth: ",docWidth);
+      console.log("docHeight: ",docHeight);
+      console.log("resized widthPercent: ",widthPercent);
+      console.log("resized heightPercent: ",heightPercent);
       var cardId = $(this).find(".monster").data("card-id");
 
       var resizedMonster = {
@@ -96,7 +96,9 @@ $(function domReady() {
       defaultMsg: "Enter your message"
     };
     bubbleTemplate = bubbleTemplate(messageObj);
+    //$(this) = draggable div
     $(bubbleTemplate).prependTo($(this));
+
     $(this).addClass("has-bubble");
     $(".draggable-bubble").draggable({
       scroll: true,
@@ -112,10 +114,10 @@ $(function domReady() {
         var docWidth = $(document).width();
         var topPercent = top / docHeight * 100;
         var leftPercent = left / docWidth * 100;
-        console.log("top: ", top);
-        console.log("left: ", left);
-        console.log("top%: ", topPercent);
-        console.log("left%: ", leftPercent);
+        console.log("dragged bubble top: ", top);
+        console.log("dragged bubble left: ", left);
+        console.log("dragged bubble top%: ", topPercent);
+        console.log("dragged bubble left%: ", leftPercent);
 
         var monsterId = $monsterImg.data("id");
         var cardId = $monsterImg.data("card-id");
@@ -133,6 +135,22 @@ $(function domReady() {
       }
     });
 
+    $('.message').on('keyup', function() {
+      $el = $(this); // This is the textarea
+      var message = $el.val();
+      var monsterId = $monsterImg.data("id");
+      var cardId = $monsterImg.data("card-id");
+
+      var messageEntered = {
+        id: cardId,
+        monsterId: monsterId,
+        message: message
+      };
+
+      console.log("messageEntered: ", messageEntered);
+      socket.emit("messageEntered", messageEntered);
+    });
+
     $(".message").blur(function() {
       $el = $(this); // This is the textarea
       var message = $el.val();
@@ -147,19 +165,12 @@ $(function domReady() {
         message: message
       };
 
-      // console.log("messageEntered: ", messageEntered);
+      console.log("messageEntered: ", messageEntered);
       socket.emit("messageEntered", messageEntered);
 
     });
+
   });
-
-  // $('.message').on('keyup', function(e) {
-  //   $el = $(this);
-  //   if(e.which === 13) {
-  //     socket.emit('message', $el.val());
-  //   }
-  // });
-
 
 
 
