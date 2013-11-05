@@ -9,7 +9,6 @@ $(function domReady() {
 
   $.localScroll();
 
-
   socket.on("connect", function(){
     // Gets position of a monster after dragstop
     $(".draggable").draggable({
@@ -55,12 +54,12 @@ $(function domReady() {
       var widthPercent = width / docWidth * 100;
       var heightPercent = height / docHeight * 100;
       var monsterId = $(this).find(".monster").data("id");
-      console.log("width: ", width);
-      console.log("height: ",height);
-      console.log("docWidth: ",docWidth);
-      console.log("docHeight: ",docHeight);
-      console.log("widthPercent: ",widthPercent);
-      console.log("heightPercent: ",heightPercent);
+      // console.log("width: ", width);
+      // console.log("height: ",height);
+      // console.log("docWidth: ",docWidth);
+      // console.log("docHeight: ",docHeight);
+      // console.log("widthPercent: ",widthPercent);
+      // console.log("heightPercent: ",heightPercent);
       var cardId = $(this).find(".monster").data("card-id");
 
       var resizedMonster = {
@@ -80,14 +79,16 @@ $(function domReady() {
   //   }
   // });
 
+  // Adding speech bubbles
   $(".draggable").dblclick(function(e) {
-    // e.target = monster img
+
+    var $monsterImg = $(e.target);
     // if ($(e.target).hasClass("bubble")===true) {
     //   alert("hi")
     // }
 
     if ($(e.target).hasClass("monster")===false || $(this).hasClass("has-bubble")===true) {
-      return false;
+      return false; // Limit 1 speech bubble per monster
     }
     var source = $("#speech-bubble").html();
     var bubbleTemplate = Handlebars.compile (source);
@@ -104,18 +105,51 @@ $(function domReady() {
 
       // },
       stop: function( event, ui ) {
-        var location = $(this).offset();
-        // console.log(location);
-        // Returns: Object {top: 378.3999938964844, left: 152}
+        // $(this) = bubble div
+        var top = $(this).offset().top;
+        var left = $(this).offset().left;
+        var docHeight = $(document).height();
+        var docWidth = $(document).width();
+        var topPercent = top / docHeight * 100;
+        var leftPercent = left / docWidth * 100;
+        console.log("top: ", top);
+        console.log("left: ", left);
+        console.log("top%: ", topPercent);
+        console.log("left%: ", leftPercent);
+
+        var monsterId = $monsterImg.data("id");
+        var cardId = $monsterImg.data("card-id");
+
+        var draggedBubble = {
+          id: cardId,
+          monsterId: monsterId,
+          top: topPercent,
+          left: leftPercent
+        };
+
+        // console.log("draggedBubble: ", draggedBubble);
+        socket.emit("draggedBubble", draggedBubble);
+
       }
     });
-    $(document).on("blur", ".message", function() {
+
+    $(".message").blur(function() {
       $el = $(this); // This is the textarea
       var message = $el.val();
       $el.parent().parent().text(message);
-      // console.log($el.parent());
-      // var monsterId = $(this).closest(".draggable");
-      // I have issue getting the monsterId
+
+      var monsterId = $monsterImg.data("id");
+      var cardId = $monsterImg.data("card-id");
+
+      var messageEntered = {
+        id: cardId,
+        monsterId: monsterId,
+        message: message
+      };
+
+      // console.log("messageEntered: ", messageEntered);
+      socket.emit("messageEntered", messageEntered);
+
     });
   });
 

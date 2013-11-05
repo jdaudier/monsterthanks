@@ -27,7 +27,6 @@ var cardSchema = new Schema({
   }
 });
 
-
 var Card = mongoose.model('Card', cardSchema);
 
 exports.Monster = Monster;

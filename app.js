@@ -12,7 +12,7 @@ var socketio = require('socket.io');
 
 var app = express();
 
-// all environments
+// All environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
@@ -24,7 +24,7 @@ app.use(app.router);
 app.use(require('stylus').middleware(__dirname + '/public'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// development only
+// Development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
@@ -74,7 +74,6 @@ app.get('/new', function(req, res){
   });
 });
 
-
 app.get('/edit/:id', function(req, res) {
   Card.findOne({_id: req.params.id}, function(err, data){
     res.render('card', data);
@@ -95,14 +94,6 @@ io.sockets.on('connection', function(socket) {
   //     user: users[socket.id],
   //     message: message
   //   });
-  // });
-
-  // socket.on('disconnect', function () {
-  //   io.sockets.emit('disconnectedMsg', {
-  //   user: users[socket.id],
-  //   message: " just left the room. Boo!"});
-  //   delete users[socket.id];
-  //   io.sockets.emit('users', users);
   // });
 
   socket.on('draggedMonster', function(draggedMonster) {
@@ -128,6 +119,22 @@ io.sockets.on('connection', function(socket) {
         if (card.monsters[i].monsterId === resizedMonster.monsterId) {
           card.monsters[i].width = resizedMonster.width;
           card.monsters[i].height = resizedMonster.height;
+          // console.log("found monster: ", card.monsters[i]);
+          card.save();
+          // io.sockets.emit('users', users);
+          // emit it being resized
+        }
+      }
+    });
+  });
+
+  socket.on('draggedBubble', function(draggedBubble) {
+
+    Card.findOne({_id: draggedBubble.id}, function(err, card){
+      for (var i = 0; i < card.monsters.length; i++) {
+        if (card.monsters[i].monsterId === draggedBubble.monsterId) {
+          card.monsters[i].speechBubble.top = draggedBubble.top;
+          card.monsters[i].speechBubble.left = draggedBubble.left;
           console.log("found monster: ", card.monsters[i]);
           card.save();
           // io.sockets.emit('users', users);
@@ -137,6 +144,20 @@ io.sockets.on('connection', function(socket) {
     });
   });
 
+  socket.on('messageEntered', function(messageEntered) {
+
+    Card.findOne({_id: messageEntered.id}, function(err, card){
+      for (var i = 0; i < card.monsters.length; i++) {
+        if (card.monsters[i].monsterId === messageEntered.monsterId) {
+          card.monsters[i].speechBubble.message = messageEntered.message;
+          console.log("found monster: ", card.monsters[i]);
+          card.save();
+          // io.sockets.emit('users', users);
+          // emit it being resized
+        }
+      }
+    });
+  });
 
 
 
