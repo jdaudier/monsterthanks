@@ -36,9 +36,9 @@ $(function domReady() {
       var docWidth = $(document).width();
 
       for (var i = 0; i < card.monsters.length; i++) {
-        if (card.monsters[i].top && card._id === cardId || card.monsters[i].height && card._id === cardId) {
+        if (card.monsters[i].top && card._id === cardId || card.monsters[i].height && card._id === cardId || card.monsters[i].speechBubble && card._id === cardId) {
           $('.monster').each(function(index, element){
-            // element = this
+            // element = this (monster img)
             if (index === card.monsters[i].monsterId) {
               var renderTop = convertToAbsoluteTop(docHeight, card.monsters[i].top);
               var renderLeft = convertToAbsoluteLeft(docWidth, card.monsters[i].left);
@@ -49,8 +49,14 @@ $(function domReady() {
               $(element).width(renderWidth);
               $(element).parent().css({"height": renderHeight + "px", "width": renderWidth + "px"});
 
-              console.log("renderTopOnSave: ", renderTop);
-              console.log("renderLeftOnSave: ", renderLeft);
+              var source = $("#speech-bubble").html();
+              var bubbleTemplate = Handlebars.compile (source);
+              var messageObj = {
+                messageEntered: card.monsters[i].speechBubble
+              };
+              bubbleTemplate = bubbleTemplate(messageObj);
+
+              $(element).parent().prev().html(bubbleTemplate);
             }
           });
         }
@@ -69,10 +75,10 @@ $(function domReady() {
         var docWidth = $(document).width();
         var topPercent = (top / docHeight) * 100;
         var leftPercent = (left / docWidth) * 100;
-        console.log("dragged top: ", top);
-        console.log("dragged left: ", left);
-        console.log("dragged top%: ", topPercent);
-        console.log("dragged left%: ", leftPercent);
+        // console.log("dragged top: ", top);
+        // console.log("dragged left: ", left);
+        // console.log("dragged top%: ", topPercent);
+        // console.log("dragged left%: ", leftPercent);
 
         var monsterId = $(this).find(".monster").data("id");
         var cardId = $(this).find(".monster").data("card-id");
@@ -84,7 +90,7 @@ $(function domReady() {
           left: leftPercent
         };
 
-        console.log("draggedMonster: ", draggedMonster);
+        // console.log("draggedMonster: ", draggedMonster);
         socket.emit("draggedMonster", draggedMonster);
       }
     });
@@ -97,10 +103,9 @@ $(function domReady() {
     var docWidth = $(document).width();
 
     for (var i = 0; i < card.monsters.length; i++) {
-      if (card.monsters[i].top && card._id === cardId || card.monsters[i].height && card._id === cardId) {
+      if (card.monsters[i].top && card._id === cardId || card.monsters[i].height && card._id === cardId || card.monsters[i].speechBubble && card._id === cardId) {
         $('.monster').each(function(index, element){
-          // element == this
-          console.log(element);
+          // element = this (monster img)
           if (index === card.monsters[i].monsterId) {
             var renderTop = convertToAbsoluteTop(docHeight, card.monsters[i].top);
             var renderLeft = convertToAbsoluteLeft(docWidth, card.monsters[i].left);
@@ -111,9 +116,18 @@ $(function domReady() {
             $(element).width(renderWidth);
             $(element).parent().css({"height": renderHeight + "px", "width": renderWidth + "px"});
 
+            var source = $("#speech-bubble").html();
+            var bubbleTemplate = Handlebars.compile (source);
+            var messageObj = {
+              messageEntered: card.monsters[i].speechBubble
+            };
+            bubbleTemplate = bubbleTemplate(messageObj);
 
-            console.log("renderTopOnSave: ", renderTop);
-            console.log("renderLeftOnSave: ", renderLeft);
+            $(element).parent().prev().html(bubbleTemplate);
+
+            // console.log("renderTopOnSave: ", renderTop);
+            // console.log("renderLeftOnSave: ", renderLeft);
+
           }
         });
       }
@@ -145,7 +159,7 @@ $(function domReady() {
         height: heightPercent
       };
 
-      console.log("resizedMonster: ", resizedMonster);
+      // console.log("resizedMonster: ", resizedMonster);
       socket.emit("resizedMonster", resizedMonster);
 
     }
@@ -167,7 +181,8 @@ $(function domReady() {
     if ($(e.target).hasClass("monster")===false || $(this).hasClass("has-bubble")===true) {
       return false; // Limit 1 speech bubble per monster
     }
-    var source = $("#speech-bubble").html();
+
+    var source = $("#editable-speech-bubble").html();
     var bubbleTemplate = Handlebars.compile (source);
     var messageObj = {
       defaultMsg: "Enter your message"
@@ -190,7 +205,7 @@ $(function domReady() {
         message: message
       };
 
-      console.log("messageEntered: ", messageEntered);
+      // console.log("messageEntered: ", messageEntered);
       socket.emit("messageEntered", messageEntered);
     });
 
@@ -198,18 +213,6 @@ $(function domReady() {
       $el = $(this); // This is the textarea
       var message = $el.val();
       $el.parent().parent().text(message);
-
-      var monsterId = $monsterImg.data("id");
-      var cardId = $monsterImg.data("card-id");
-
-      var messageEntered = {
-        id: cardId,
-        monsterId: monsterId,
-        message: message
-      };
-
-      console.log("messageEntered: ", messageEntered);
-      socket.emit("messageEntered", messageEntered);
     });
 
   }); // End of adding a speech bubble

@@ -21,6 +21,7 @@ block content
 
         for monster in monsters
           .draggable
+            .bubble-container
             img.monster(src='/images/monsters/monster' + monster.monsterId + '.svg', alt='monster' data-id=monster.monsterId, data-card-id=id)
 
     include speechbubble.html

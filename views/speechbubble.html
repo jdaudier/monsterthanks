@@ -1,7 +1,12 @@
-<script id="speech-bubble" type="text/x-handlebars-template">
+<script id="editable-speech-bubble" type="text/x-handlebars-template">
   <div class="bubble">
     <form>
       <textarea class="form-control message" rows="3" placeholder="{{defaultMsg}}"></textarea>
     </form>
   </div>
+</script>
+
+
+<script id="speech-bubble" type="text/x-handlebars-template">
+  <div class="bubble">{{messageEntered}}</div>
 </script>

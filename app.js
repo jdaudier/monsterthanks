@@ -80,7 +80,8 @@ app.get('/edit/:id', function(req, res) {
 });
 
 io.sockets.on('connection', function(socket) {
-  // users[socket.id] = socket.id;
+  //socket is the specific connection that's fired
+
   socket.on('cardId', function(cardId) {
     Card.findOne({_id: cardId}, function(err, card){
       if (err) {
@@ -91,18 +92,6 @@ io.sockets.on('connection', function(socket) {
       }
     });
   });
-
-  // io.sockets.emit('connectedMsg', {
-  //   user: users[socket.id],
-  //   message: " just joined the room!"
-  // });
-  // //socket is the specific connection that's fired
-  // socket.on('clientMsg', function(message){
-  //   io.sockets.emit('serverMsg', {
-  //     user: users[socket.id],
-  //     message: message
-  //   });
-  // });
 
   socket.on('draggedMonster', function(draggedMonster) {
 
@@ -128,6 +117,7 @@ io.sockets.on('connection', function(socket) {
               //     [ { _id: 52799a4a7776e20000000003,
               //       left: 25.905511811023622,
               //       monsterId: 0,
+              //       speechBubble: "this is my message",
               //       top: 41.77274870344178,
               //       height: 100,
               //       width: 100
@@ -169,8 +159,14 @@ io.sockets.on('connection', function(socket) {
         if (card.monsters[i].monsterId === messageEntered.monsterId) {
           card.monsters[i].speechBubble = messageEntered.message;
           // console.log("found monster: ", card.monsters[i]);
-          card.save();
-          // io.sockets.emit('users', users);
+          card.save(function (err, card) {
+            if (err) {
+              res.send(500, "Monster's new message is NOT saved");
+            }
+            else {
+              socket.broadcast.emit('cardSaved', card);
+            }
+          });
         }
       }
     });
