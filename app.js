@@ -64,9 +64,7 @@ app.get('/new', function(req, res){
   //Save the Card document
   card.save(function(err){
     if (err) {
-      console.log(card);
-      console.log(err);
-      res.send(500, "Card is not saved");
+      res.send(500, "Card is NOT saved");
     }
     else {
       res.redirect(path);
@@ -75,8 +73,8 @@ app.get('/new', function(req, res){
 });
 
 app.get('/edit/:id', function(req, res) {
-  Card.findOne({_id: req.params.id}, function(err, data){
-    res.render('card', data);
+  Card.findOne({_id: req.params.id}, function(err, card){
+    res.render('card', card);
   });
 
 });
@@ -103,10 +101,38 @@ io.sockets.on('connection', function(socket) {
         if (card.monsters[i].monsterId === draggedMonster.monsterId) {
           card.monsters[i].top = draggedMonster.top;
           card.monsters[i].left = draggedMonster.left;
-          console.log("found monster: ", card.monsters[i]);
-          card.save();
-          // io.sockets.emit('users', users);
-          // emit it being dragged
+          // console.log("found monster: ", card.monsters[i]);
+          card.save(function (err, card) {
+            if (err) {
+              res.send(500, "Monster's new position is NOT saved");
+            }
+            else {
+              console.log("Card saved: ", card);
+
+              io.sockets.emit('savedCard', card);
+
+              // card = {
+              //   __v: 0,
+              //   _id: 52799a4a7776e20000000002,
+              //   createdAt: Tue Nov 05 2013 18:24:26 GMT-0700 (MST),
+              //   background: 'backyard.jpg',
+              //   monsters:
+              //     [ { _id: 52799a4a7776e20000000003,
+              //       left: 25.905511811023622,
+              //       monsterId: 0,
+              //       top: 41.77274870344178,
+              //       height: 100,
+              //       width: 100
+              //     },
+
+            }
+          });
+
+  //   io.sockets.emit('serverMsg', {
+  //     user: users[socket.id],
+  //     message: message
+  //   });
+
         }
       }
     });
@@ -122,7 +148,6 @@ io.sockets.on('connection', function(socket) {
           // console.log("found monster: ", card.monsters[i]);
           card.save();
           // io.sockets.emit('users', users);
-          // emit it being resized
         }
       }
     });
@@ -134,10 +159,9 @@ io.sockets.on('connection', function(socket) {
       for (var i = 0; i < card.monsters.length; i++) {
         if (card.monsters[i].monsterId === messageEntered.monsterId) {
           card.monsters[i].speechBubble = messageEntered.message;
-          console.log("found monster: ", card.monsters[i]);
+          // console.log("found monster: ", card.monsters[i]);
           card.save();
           // io.sockets.emit('users', users);
-          // emit it being resized
         }
       }
     });

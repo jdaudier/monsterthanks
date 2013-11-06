@@ -10,7 +10,7 @@ $(function domReady() {
   $.localScroll();
 
   socket.on("connect", function(){
-    // Gets position of a monster after dragstop
+    // Gets position of a monster during the dragging
     $(".draggable").draggable({
       scroll: true,
       containment: "window",
@@ -36,14 +36,40 @@ $(function domReady() {
           left: leftPercent
         };
 
-        console.log("draggedMonster: ", draggedMonster);
+        // console.log("draggedMonster: ", draggedMonster);
 
         socket.emit("draggedMonster", draggedMonster);
       }
     });
   });
 
-  // Gets size of monster after resizing
+  var convertToAbsoluteHeight = function(docHeight, topPercent) {
+    return (docHeight * topPercent)/100;
+  };
+
+  var convertToAbsoluteWidth = function(docWidth, leftPercent) {
+    return (docWidth * leftPercent)/100;
+  };
+
+  socket.on('savedCard', function(card){
+    // console.log(card);
+
+    // Need to find the 1st monster
+    console.log($('.monster-container .draggable:nth-of-type(1)'));
+
+    // for (var i = 0; i < card.monsters.length; i++) {
+    //   if (card.monsters[i].width) {
+
+    //   }
+
+    // };
+    // if there's height and width % & id = id, monster id = monster id
+    // do calculation to convert to top & left position
+    // render image
+
+  });
+
+  // Gets size of monster during the resizing
   $(".monster").resizable({
     resize: function( event, ui ) {
       var width = ui.size.width;

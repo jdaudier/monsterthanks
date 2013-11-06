@@ -5,8 +5,8 @@ var monsterSchema = new Schema({
   monsterId: Number,
   top: Number,
   left: Number,
-  width: {type: Number, default: 100},
-  height: {type: Number, default: 100},
+  width: Number,
+  height: Number,
   speechBubble: String
 });
 
