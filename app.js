@@ -81,6 +81,16 @@ app.get('/edit/:id', function(req, res) {
 
 io.sockets.on('connection', function(socket) {
   // users[socket.id] = socket.id;
+  socket.on('cardId', function(cardId) {
+    Card.findOne({_id: cardId}, function(err, card){
+      if (err) {
+        res.send(500, "Card is NOT found");
+      }
+      else {
+        io.sockets.emit('cardLoaded', card);
+      }
+    });
+  });
 
   // io.sockets.emit('connectedMsg', {
   //   user: users[socket.id],
@@ -109,7 +119,7 @@ io.sockets.on('connection', function(socket) {
             else {
               console.log("Card saved: ", card);
 
-              io.sockets.emit('savedCard', card);
+              io.sockets.emit('cardSaved', card);
 
               // card = {
               //   __v: 0,

@@ -2,6 +2,14 @@ var socket = io.connect();
 
 $(function domReady() {
 
+  var convertToAbsoluteTop = function(docHeight, topPercent) {
+    return (docHeight * topPercent) / 100;
+  };
+
+  var convertToAbsoluteLeft = function(docWidth, leftPercent) {
+    return (docWidth * leftPercent) / 100;
+  };
+
   // Creates a new Card
   $(".action-btn").click(function(e) {
     window.location.href = "/new";
@@ -10,6 +18,32 @@ $(function domReady() {
   $.localScroll();
 
   socket.on("connect", function(){
+    var cardId = $('.draggable:first .monster').data("card-id");
+    socket.emit("cardId", cardId);
+
+    socket.on('cardLoaded', function(card){
+        console.log(card);
+        var cardId = $('.draggable:first .monster').data("card-id");
+        var docHeight = $(document).height();
+        var docWidth = $(document).width();
+
+        for (var i = 0; i < card.monsters.length; i++) {
+          if (card.monsters[i].top && card._id === cardId) {
+            $('.monster').each(function(index, element){
+              // element == this
+              if (index === card.monsters[i].monsterId) {
+                var renderTop = convertToAbsoluteTop(docHeight, card.monsters[i].top);
+                var renderLeft = convertToAbsoluteLeft(docWidth, card.monsters[i].left);
+                $(element).parents(".draggable").css({"position": "absolute", "top": renderTop + "px", "left": renderLeft + "px"});
+                console.log("renderTop: ", renderTop);
+                console.log("renderLeft: ", renderLeft);
+              }
+            });
+          }
+        }
+      });
+
+
     // Gets position of a monster during the dragging
     $(".draggable").draggable({
       scroll: true,
@@ -19,12 +53,12 @@ $(function domReady() {
         var left = ui.offset.left;
         var docHeight = $(document).height();
         var docWidth = $(document).width();
-        var topPercent = top / docHeight * 100;
-        var leftPercent = left / docWidth * 100;
-        // console.log("dragged top: ", top);
-        // console.log("dragged left: ", left);
-        // console.log("dragged top%: ", topPercent);
-        // console.log("dragged left%: ", leftPercent);
+        var topPercent = (top / docHeight) * 100;
+        var leftPercent = (left / docWidth) * 100;
+        console.log("dragged top: ", top);
+        console.log("dragged left: ", left);
+        console.log("dragged top%: ", topPercent);
+        console.log("dragged left%: ", leftPercent);
 
         var monsterId = $(this).find(".monster").data("id");
         var cardId = $(this).find(".monster").data("card-id");
@@ -36,37 +70,32 @@ $(function domReady() {
           left: leftPercent
         };
 
-        // console.log("draggedMonster: ", draggedMonster);
-
+        console.log("draggedMonster: ", draggedMonster);
         socket.emit("draggedMonster", draggedMonster);
       }
     });
   });
 
-  var convertToAbsoluteHeight = function(docHeight, topPercent) {
-    return (docHeight * topPercent)/100;
-  };
-
-  var convertToAbsoluteWidth = function(docWidth, leftPercent) {
-    return (docWidth * leftPercent)/100;
-  };
-
-  socket.on('savedCard', function(card){
+  socket.on('cardSaved', function(card){
     // console.log(card);
+    var cardId = $('.draggable:first .monster').data("card-id");
+    var docHeight = $(document).height();
+    var docWidth = $(document).width();
 
-    // Need to find the 1st monster
-    console.log($('.monster-container .draggable:nth-of-type(1)'));
-
-    // for (var i = 0; i < card.monsters.length; i++) {
-    //   if (card.monsters[i].width) {
-
-    //   }
-
-    // };
-    // if there's height and width % & id = id, monster id = monster id
-    // do calculation to convert to top & left position
-    // render image
-
+    for (var i = 0; i < card.monsters.length; i++) {
+      if (card.monsters[i].top && card._id === cardId) {
+        $('.monster').each(function(index, element){
+          // element == this
+          if (index === card.monsters[i].monsterId) {
+            var renderTop = convertToAbsoluteTop(docHeight, card.monsters[i].top);
+            var renderLeft = convertToAbsoluteLeft(docWidth, card.monsters[i].left);
+            $(element).parents(".draggable").css({"position": "absolute", "top": renderTop + "px", "left": renderLeft + "px"});
+            console.log("renderTopOnSave: ", renderTop);
+            console.log("renderLeftOnSave: ", renderLeft);
+          }
+        });
+      }
+    }
   });
 
   // Gets size of monster during the resizing
@@ -76,8 +105,8 @@ $(function domReady() {
       var height = ui.size.height;
       var docWidth = $(document).width();
       var docHeight = $(document).height();
-      var widthPercent = width / docWidth * 100;
-      var heightPercent = height / docHeight * 100;
+      var widthPercent = (width / docWidth) * 100;
+      var heightPercent = (height / docHeight) * 100;
       var monsterId = $(this).find(".monster").data("id");
       // console.log("resized width: ", width);
       // console.log("resized height: ",height);
