@@ -117,9 +117,7 @@ io.sockets.on('connection', function(socket) {
               res.send(500, "Monster's new position is NOT saved");
             }
             else {
-              console.log("Card saved: ", card);
-
-              io.sockets.emit('cardSaved', card);
+              socket.broadcast.emit('cardSaved', card);
 
               // card = {
               //   __v: 0,
@@ -137,12 +135,6 @@ io.sockets.on('connection', function(socket) {
 
             }
           });
-
-  //   io.sockets.emit('serverMsg', {
-  //     user: users[socket.id],
-  //     message: message
-  //   });
-
         }
       }
     });
@@ -156,8 +148,15 @@ io.sockets.on('connection', function(socket) {
           card.monsters[i].width = resizedMonster.width;
           card.monsters[i].height = resizedMonster.height;
           // console.log("found monster: ", card.monsters[i]);
-          card.save();
-          // io.sockets.emit('users', users);
+
+          card.save(function (err, card) {
+            if (err) {
+              res.send(500, "Monster's new size is NOT saved");
+            }
+            else {
+              socket.broadcast.emit('cardSaved', card);
+            }
+          });
         }
       }
     });

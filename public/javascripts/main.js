@@ -10,6 +10,14 @@ $(function domReady() {
     return (docWidth * leftPercent) / 100;
   };
 
+  var convertToAbsoluteWidth = function(docWidth, widthPercent) {
+    return (docWidth * widthPercent) / 100;
+  };
+
+  var convertToAbsoluteHeight = function(docHeight, heightPercent) {
+    return (docHeight * heightPercent) / 100;
+  };
+
   // Creates a new Card
   $(".action-btn").click(function(e) {
     window.location.href = "/new";
@@ -22,26 +30,32 @@ $(function domReady() {
     socket.emit("cardId", cardId);
 
     socket.on('cardLoaded', function(card){
-        console.log(card);
-        var cardId = $('.draggable:first .monster').data("card-id");
-        var docHeight = $(document).height();
-        var docWidth = $(document).width();
+      // console.log(card);
+      var cardId = $('.draggable:first .monster').data("card-id");
+      var docHeight = $(document).height();
+      var docWidth = $(document).width();
 
-        for (var i = 0; i < card.monsters.length; i++) {
-          if (card.monsters[i].top && card._id === cardId) {
-            $('.monster').each(function(index, element){
-              // element == this
-              if (index === card.monsters[i].monsterId) {
-                var renderTop = convertToAbsoluteTop(docHeight, card.monsters[i].top);
-                var renderLeft = convertToAbsoluteLeft(docWidth, card.monsters[i].left);
-                $(element).parents(".draggable").css({"position": "absolute", "top": renderTop + "px", "left": renderLeft + "px"});
-                console.log("renderTop: ", renderTop);
-                console.log("renderLeft: ", renderLeft);
-              }
-            });
-          }
+      for (var i = 0; i < card.monsters.length; i++) {
+        if (card.monsters[i].top && card._id === cardId || card.monsters[i].height && card._id === cardId) {
+          $('.monster').each(function(index, element){
+            // element = this
+            if (index === card.monsters[i].monsterId) {
+              var renderTop = convertToAbsoluteTop(docHeight, card.monsters[i].top);
+              var renderLeft = convertToAbsoluteLeft(docWidth, card.monsters[i].left);
+              var renderWidth = convertToAbsoluteWidth(docWidth, card.monsters[i].width);
+              var renderHeight = convertToAbsoluteHeight(docHeight, card.monsters[i].height);
+              $(element).parents(".draggable").css({"position": "absolute", "top": renderTop + "px", "left": renderLeft + "px"});
+              $(element).height(renderHeight);
+              $(element).width(renderWidth);
+              $(element).parent().css({"height": renderHeight + "px", "width": renderWidth + "px"});
+
+              console.log("renderTopOnSave: ", renderTop);
+              console.log("renderLeftOnSave: ", renderLeft);
+            }
+          });
         }
-      });
+      }
+    });
 
 
     // Gets position of a monster during the dragging
@@ -83,13 +97,21 @@ $(function domReady() {
     var docWidth = $(document).width();
 
     for (var i = 0; i < card.monsters.length; i++) {
-      if (card.monsters[i].top && card._id === cardId) {
+      if (card.monsters[i].top && card._id === cardId || card.monsters[i].height && card._id === cardId) {
         $('.monster').each(function(index, element){
           // element == this
+          console.log(element);
           if (index === card.monsters[i].monsterId) {
             var renderTop = convertToAbsoluteTop(docHeight, card.monsters[i].top);
             var renderLeft = convertToAbsoluteLeft(docWidth, card.monsters[i].left);
+            var renderWidth = convertToAbsoluteWidth(docWidth, card.monsters[i].width);
+            var renderHeight = convertToAbsoluteHeight(docHeight, card.monsters[i].height);
             $(element).parents(".draggable").css({"position": "absolute", "top": renderTop + "px", "left": renderLeft + "px"});
+            $(element).height(renderHeight);
+            $(element).width(renderWidth);
+            $(element).parent().css({"height": renderHeight + "px", "width": renderWidth + "px"});
+
+
             console.log("renderTopOnSave: ", renderTop);
             console.log("renderLeftOnSave: ", renderLeft);
           }
