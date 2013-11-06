@@ -27,9 +27,9 @@ Monster Thanks is an interactive thank you card that enables _real-time_ collabo
 
 ### Client-Server Communication
 * Web sockets (Sockets.io)
-* AJAX (?)
 
 ### Bonus (if I have time)
+* Recipient has a different view
 * Ability to change out the font style for "A monster thanks from all of us" header message
 * Dynamically inserting recipient's first name in header message
 * Copy link feature (like GitHub)
@@ -38,10 +38,8 @@ Monster Thanks is an interactive thank you card that enables _real-time_ collabo
 * User can come back and edit the text or change monster
 
 ### Questions:
-1. How do I load the monster (along with the position and message bubble) that someone else has created before me?
-2. Is it hard to make it real-time where I can see when someone else is adding stuff (like Google docs)?
-3. How do I auto save?
-4. How do I lock the card?
-5. How do I create message bubbles using CSS-transformations?
-6. I can't figure out how to resize a SVG (together with dragging).
-7. I can't figure out how to drag an item outside of its parent div (to the right side of the page)
+1. __SOLVED:__ How do I load the monster (along with the position and message bubble) that someone else has created before me?
+2. __SOLVED:__ Is it hard to make it real-time where I can see when someone else is adding stuff (like Google docs)?
+3. __SOLVED:__ How do I auto save?
+4. __SOLVED:__ I can't figure out how to resize a SVG (together with dragging).
+5. __UNSOLVED:__ I can't figure out how to drag an item outside of its parent div (to the right side of the page)
