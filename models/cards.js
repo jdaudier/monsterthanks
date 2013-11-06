@@ -7,11 +7,7 @@ var monsterSchema = new Schema({
   left: Number,
   width: {type: Number, default: 100},
   height: {type: Number, default: 100},
-  speechBubble: {
-    top : Number,
-    left : Number,
-    message: String
-  }
+  speechBubble: String
 });
 
 // speechBubble.top to write to it

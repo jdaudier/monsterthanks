@@ -14,23 +14,17 @@ $(function domReady() {
     $(".draggable").draggable({
       scroll: true,
       containment: "window",
-      // start: function( event, ui ) {
-
-      // },
-      stop: function( event, ui ) {
-        console.log(event);
-        console.log(ui);
-
+      drag: function( event, ui ) {
         var top = ui.offset.top;
         var left = ui.offset.left;
         var docHeight = $(document).height();
         var docWidth = $(document).width();
         var topPercent = top / docHeight * 100;
         var leftPercent = left / docWidth * 100;
-        console.log("dragged top: ", top);
-        console.log("dragged left: ", left);
-        console.log("dragged top%: ", topPercent);
-        console.log("dragged left%: ", leftPercent);
+        // console.log("dragged top: ", top);
+        // console.log("dragged left: ", left);
+        // console.log("dragged top%: ", topPercent);
+        // console.log("dragged left%: ", leftPercent);
 
         var monsterId = $(this).find(".monster").data("id");
         var cardId = $(this).find(".monster").data("card-id");
@@ -42,6 +36,8 @@ $(function domReady() {
           left: leftPercent
         };
 
+        console.log("draggedMonster: ", draggedMonster);
+
         socket.emit("draggedMonster", draggedMonster);
       }
     });
@@ -49,7 +45,7 @@ $(function domReady() {
 
   // Gets size of monster after resizing
   $(".monster").resizable({
-    stop: function( event, ui ) {
+    resize: function( event, ui ) {
       var width = ui.size.width;
       var height = ui.size.height;
       var docWidth = $(document).width();
@@ -57,12 +53,12 @@ $(function domReady() {
       var widthPercent = width / docWidth * 100;
       var heightPercent = height / docHeight * 100;
       var monsterId = $(this).find(".monster").data("id");
-      console.log("resized width: ", width);
-      console.log("resized height: ",height);
-      console.log("docWidth: ", docWidth);
-      console.log("docHeight: ", docHeight);
-      console.log("resized widthPercent: ", widthPercent);
-      console.log("resized heightPercent: ", heightPercent);
+      // console.log("resized width: ", width);
+      // console.log("resized height: ",height);
+      // console.log("docWidth: ", docWidth);
+      // console.log("docHeight: ", docHeight);
+      // console.log("resized widthPercent: ", widthPercent);
+      // console.log("resized heightPercent: ", heightPercent);
       var cardId = $(this).find(".monster").data("card-id");
 
       var resizedMonster = {
@@ -72,6 +68,7 @@ $(function domReady() {
         height: heightPercent
       };
 
+      console.log("resizedMonster: ", resizedMonster);
       socket.emit("resizedMonster", resizedMonster);
 
     }
@@ -103,40 +100,6 @@ $(function domReady() {
     $(bubbleTemplate).prependTo($(this));
 
     $(this).addClass("has-bubble");
-    $(".draggable-bubble").draggable({
-      scroll: true,
-      containment: ".background",
-      // start: function( event, ui ) {
-
-      // },
-      stop: function( event, ui ) {
-        // $(this) = bubble div
-        var top = ui.offset.top;
-        var left = ui.offset.left;
-        var docHeight = $(document).height();
-        var docWidth = $(document).width();
-        var topPercent = top / docHeight * 100;
-        var leftPercent = left / docWidth * 100;
-        console.log("dragged bubble top: ", top);
-        console.log("dragged bubble left: ", left);
-        console.log("dragged bubble top%: ", topPercent);
-        console.log("dragged bubble left%: ", leftPercent);
-
-        var monsterId = $monsterImg.data("id");
-        var cardId = $monsterImg.data("card-id");
-
-        var draggedBubble = {
-          id: cardId,
-          monsterId: monsterId,
-          top: topPercent,
-          left: leftPercent
-        };
-
-        // console.log("draggedBubble: ", draggedBubble);
-        socket.emit("draggedBubble", draggedBubble);
-
-      }
-    });
 
     $('.message').on('keyup', function() {
       $el = $(this); // This is the textarea
@@ -170,10 +133,9 @@ $(function domReady() {
 
       console.log("messageEntered: ", messageEntered);
       socket.emit("messageEntered", messageEntered);
-
     });
 
-  });
+  }); // End of adding a speech bubble
 
 
 

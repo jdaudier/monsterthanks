@@ -128,29 +128,12 @@ io.sockets.on('connection', function(socket) {
     });
   });
 
-  socket.on('draggedBubble', function(draggedBubble) {
-
-    Card.findOne({_id: draggedBubble.id}, function(err, card){
-      for (var i = 0; i < card.monsters.length; i++) {
-        if (card.monsters[i].monsterId === draggedBubble.monsterId) {
-          card.monsters[i].speechBubble.top = draggedBubble.top;
-          card.monsters[i].speechBubble.left = draggedBubble.left;
-          console.log("found monster: ", card.monsters[i]);
-          card.save();
-          // io.sockets.emit('users', users);
-          // emit it being resized
-        }
-      }
-    });
-  });
-
   socket.on('messageEntered', function(messageEntered) {
 
     Card.findOne({_id: messageEntered.id}, function(err, card){
       for (var i = 0; i < card.monsters.length; i++) {
         if (card.monsters[i].monsterId === messageEntered.monsterId) {
-          card.monsters[i].speechBubble.top = messageEntered.top;
-          card.monsters[i].speechBubble.left = messageEntered.left;
+          card.monsters[i].speechBubble = messageEntered.message;
           console.log("found monster: ", card.monsters[i]);
           card.save();
           // io.sockets.emit('users', users);
@@ -159,6 +142,9 @@ io.sockets.on('connection', function(socket) {
       }
     });
   });
+
+
+
 
 
 
