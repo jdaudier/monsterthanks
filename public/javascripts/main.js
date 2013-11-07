@@ -36,7 +36,7 @@ $(function domReady() {
       var docWidth = $(document).width();
 
       for (var i = 0; i < card.monsters.length; i++) {
-        if (card.monsters[i].top && card._id === cardId || card.monsters[i].height && card._id === cardId || card.monsters[i].speechBubble && card._id === cardId) {
+        if (card.monsters[i].top && card._id === cardId || card.monsters[i].height && card._id === cardId) {
           $('.monster').each(function(index, element){
             // element = this (monster img)
             if (index === card.monsters[i].monsterId) {
@@ -48,18 +48,25 @@ $(function domReady() {
               $(element).height(renderHeight);
               $(element).width(renderWidth);
               $(element).parent().css({"height": renderHeight + "px", "width": renderWidth + "px"});
+            }
+          });
+        }
 
+        if (card.monsters[i].speechBubble && card._id === cardId) {
+          $('.monster').each(function(index, element){
+            // element = this (monster img)
+            if (index === card.monsters[i].monsterId) {
               var source = $("#speech-bubble").html();
               var bubbleTemplate = Handlebars.compile (source);
               var messageObj = {
                 messageEntered: card.monsters[i].speechBubble
               };
               bubbleTemplate = bubbleTemplate(messageObj);
-
               $(element).parent().prev().html(bubbleTemplate);
             }
           });
         }
+
       }
     });
 
