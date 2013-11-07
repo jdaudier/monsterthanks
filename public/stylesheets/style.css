@@ -170,16 +170,14 @@ footer {
 .monster:hover {
   border: 2px dashed #fff;
 }
+.bubble:hover {
+  border: 2px dashed #9e9e9e;
+}
 .bubble {
   cursor: move;
   display: inline-block;
   margin-bottom: 18px;
   width: 250px;
-}
-.bubble:hover {
-  border: 2px dashed #9e9e9e;
-}
-.bubble {
   position: relative;
   padding: 10px;
   background: #e8e8e8;
