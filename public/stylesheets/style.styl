@@ -162,14 +162,15 @@ footer
 .draggable
   display inline-block
   margin 10px
-  width 100px // This constrains the empty space after a monster is dragged
-  height 100px // This constrains the empty space after a monster is dragged
+  width 100px // This constrains the empty space after a monster is resized
+  height 100px // This constrains the empty space after a monster is resized
 
 .monster
   cursor move
   margin 10px
   width 100px
   height 100px
+  position absolute // This constrains the empty space after a monster is resized
 
 .monster:hover
   border 2px dashed white
