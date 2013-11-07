@@ -129,8 +129,6 @@ $(function domReady() {
 
   socket.on('msgSaved', function(card){
     var cardId = $('.draggable:first .monster').data("card-id");
-    var docHeight = $(document).height();
-    var docWidth = $(document).width();
 
     for (var i = 0; i < card.monsters.length; i++) {
       if (card.monsters[i].speechBubble && card._id === cardId) {
