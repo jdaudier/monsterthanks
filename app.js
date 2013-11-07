@@ -88,7 +88,8 @@ io.sockets.on('connection', function(socket) {
         res.send(500, "Card is NOT found");
       }
       else {
-        io.sockets.emit('cardLoaded', card);
+        // When I request a card, it only comes back to me instead of everyone else
+        socket.emit('cardLoaded', card);
       }
     });
   });
