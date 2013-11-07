@@ -157,6 +157,8 @@ footer {
 .draggable {
   display: inline-block;
   margin: 10px;
+  width: 100px;
+  height: 100px;
 }
 .monster {
   cursor: move;
