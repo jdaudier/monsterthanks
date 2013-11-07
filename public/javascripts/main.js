@@ -97,7 +97,6 @@ $(function domReady() {
   });
 
   socket.on('cardSaved', function(card){
-    // console.log(card);
     var cardId = $('.draggable:first .monster').data("card-id");
     var docHeight = $(document).height();
     var docWidth = $(document).width();
@@ -115,7 +114,22 @@ $(function domReady() {
             $(element).height(renderHeight);
             $(element).width(renderWidth);
             $(element).parent().css({"height": renderHeight + "px", "width": renderWidth + "px"});
+          }
+        });
+      }
+    }
+  });
 
+  socket.on('msgSaved', function(card){
+    var cardId = $('.draggable:first .monster').data("card-id");
+    var docHeight = $(document).height();
+    var docWidth = $(document).width();
+
+    for (var i = 0; i < card.monsters.length; i++) {
+      if (card.monsters[i].speechBubble && card._id === cardId) {
+        $('.monster').each(function(index, element){
+          // element = this (monster img)
+          if (index === card.monsters[i].monsterId) {
             var source = $("#speech-bubble").html();
             var bubbleTemplate = Handlebars.compile (source);
             var messageObj = {
@@ -124,15 +138,12 @@ $(function domReady() {
             bubbleTemplate = bubbleTemplate(messageObj);
 
             $(element).parent().prev().html(bubbleTemplate);
-
-            // console.log("renderTopOnSave: ", renderTop);
-            // console.log("renderLeftOnSave: ", renderLeft);
-
           }
         });
       }
     }
   });
+
 
   // Gets size of monster during the resizing
   $(".monster").resizable({

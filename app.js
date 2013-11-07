@@ -164,7 +164,7 @@ io.sockets.on('connection', function(socket) {
               res.send(500, "Monster's new message is NOT saved");
             }
             else {
-              socket.broadcast.emit('cardSaved', card);
+              socket.broadcast.emit('msgSaved', card);
             }
           });
         }
