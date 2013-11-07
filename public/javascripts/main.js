@@ -183,13 +183,12 @@ $(function domReady() {
 
   // Adding speech bubbles
   $(".draggable").dblclick(function(e) {
-
+    console.log(e);
+    console.log($(this));
     var $monsterImg = $(e.target);
-    // if ($(e.target).hasClass("bubble")===true) {
-    //   alert("hi")
-    // }
 
-    if ($(e.target).hasClass("monster")===false || $(this).hasClass("has-bubble")===true) {
+    //$(this) = draggable div
+    if ($(e.target).hasClass("monster")===false || $(this).hasClass("has-bubble")===true || $(this).children().children().hasClass("bubble")===true) {
       return false; // Limit 1 speech bubble per monster
     }
 
@@ -199,7 +198,6 @@ $(function domReady() {
       defaultMsg: "Enter your message"
     };
     bubbleTemplate = bubbleTemplate(messageObj);
-    //$(this) = draggable div
     $(bubbleTemplate).prependTo($(this));
 
     $(this).addClass("has-bubble");
