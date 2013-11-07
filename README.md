@@ -15,6 +15,7 @@ Monster Thanks is an interactive thank you card that enables _real-time_ collabo
 8. Send the link to the recipient (card is locked)
 
 ### Client-Side
+* jQuery
 * Handlebars
 * Stylus
 
