@@ -1,12 +1,21 @@
+
+/* line 1 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
+
+/* line 10 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 *,
 *:before,
 *:after {
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+
+/* line 14 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 body {
   font-family: 'Lato', sans-serif;
   background-color: #e8e8e8;
 }
+
+/* line 18 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .letter {
   display: inline-block;
   font-weight: 900;
@@ -18,6 +27,8 @@ body {
   perspective: 400px;
   z-index: 1;
 }
+
+/* line 28 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .letter:before {
   color: #fff;
   text-shadow: -1px 0 1px rgba(255,255,255,0.8), 1px 0 1px rgba(0,0,0,0.8);
@@ -25,21 +36,31 @@ body {
   -webkit-transform: rotateX(0deg) rotateY(-15deg) rotateZ(0deg);
   transform: rotateX(0deg) rotateY(-15deg) rotateZ(0deg);
 }
+
+/* line 34 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .letter:after {
   color: rgba(0,0,0,0.11);
   z-index: 2;
   -webkit-transform: scale(1.08, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 1deg);
   transform: scale(1.08, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 1deg);
 }
+
+/* line 39 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+
+/* line 40 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .letter:hover:before {
   color: #fafafa;
   -webkit-transform: rotateX(0deg) rotateY(-70deg) rotateZ(0deg);
   transform: rotateX(0deg) rotateY(-70deg) rotateZ(0deg);
 }
+
+/* line 44 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .letter:hover:after {
   -webkit-transform: scale(1.08, 1) rotateX(0deg) rotateY(70deg) rotateZ(0deg) skew(0deg, 22deg);
   transform: scale(1.08, 1) rotateX(0deg) rotateY(70deg) rotateZ(0deg) skew(0deg, 22deg);
 }
+
+/* line 48 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .letter:before,
 .letter:after {
   position: absolute;
@@ -49,14 +70,20 @@ body {
   top: 0;
   left: 0;
 }
+
+/* line 56 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .letter,
 .letter:before,
 .letter:after {
   transition: all 0.3s ease-in-out;
 }
+
+/* line 59 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .hero {
   text-align: center;
 }
+
+/* line 62 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .action-btn {
   text-transform: uppercase;
   background-color: #09b39c;
@@ -70,16 +97,22 @@ body {
   -webkit-animation-delay: 1s;
   animation-delay: 1s;
 }
+
+/* line 75 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .action-btn:hover {
   background-color: #0acbb1;
   border-color: #09b39c;
 }
+
+/* line 79 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 footer {
   width: 100%;
   height: 150px;
   background-color: #25382f;
   color: #fff;
 }
+
+/* line 85 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .maker {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 100;
@@ -87,18 +120,26 @@ footer {
   padding-top: 120px;
   text-align: center;
 }
+
+/* line 92 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .codepalette {
   color: #fff;
   margin-left: 5px;
 }
+
+/* line 98 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .down-arrow {
   font-size: 0.9em;
   color: #09b39c;
   margin-left: 40px;
 }
+
+/* line 103 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .down-arrow:hover {
   color: #0acbb1;
 }
+
+/* line 106 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .header {
   font-family: 'Londrina Sketch', cursive;
   color: #fff;
@@ -109,6 +150,8 @@ footer {
   padding: 0;
   margin-bottom: 20px;
 }
+
+/* line 116 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .notice-me {
   text-transform: uppercase;
   display: inline-block;
@@ -119,11 +162,15 @@ footer {
   margin: 0 30px;
   font-size: 1.4em;
 }
+
+/* line 126 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .dropzone {
   padding: 20px 40px 40px;
   background: #34495e;
   text-align: center;
 }
+
+/* line 131 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 #right-arrow,
 #left-arrow {
   font-size: 3em;
@@ -132,20 +179,30 @@ footer {
   top: 476px;
   z-index: 3;
 }
+
+/* line 138 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 #right-arrow:hover {
   color: #9e9e9e;
 }
+
+/* line 141 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 #left-arrow:hover {
   color: #9e9e9e;
 }
+
+/* line 144 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 #right-arrow {
   float: right;
   margin-right: 15px;
 }
+
+/* line 148 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 #left-arrow {
   float: left;
   margin-left: 15px;
 }
+
+/* line 152 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .background {
   border-radius: 6px;
   border: 6px solid #fff;
@@ -153,10 +210,14 @@ footer {
   background: url("../images/backgrounds/backyard.jpg") no-repeat;
   background-size: cover;
 }
+
+/* line 159 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 #closet {
   background: #fff;
   padding: 40px;
 }
+
+/* line 163 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .monster-container {
   background: #e8e8e8;
   border-radius: 6px;
@@ -164,6 +225,8 @@ footer {
   border: 6px solid #09b39c;
   text-align: center;
 }
+
+/* line 170 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .closet-header {
   font-family: 'Londrina Sketch', cursive;
   color: #089b87;
@@ -171,12 +234,16 @@ footer {
   font-size: 5em;
   display: inline-block;
 }
+
+/* line 177 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .draggable {
   display: inline-block;
   margin: 10px;
   width: 100px;
   height: 100px;
 }
+
+/* line 183 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .monster {
   cursor: move;
   margin: 10px;
@@ -184,9 +251,13 @@ footer {
   height: 100px;
   position: absolute;
 }
+
+/* line 190 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .monster:hover {
   border: 2px dashed #fff;
 }
+
+/* line 193 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .bubble {
   cursor: move;
   display: inline-block;
@@ -198,6 +269,8 @@ footer {
   border-radius: 6px;
   z-index: 1;
 }
+
+/* line 203 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .bubble:after {
   content: "";
   position: absolute;
@@ -210,9 +283,13 @@ footer {
   width: 0;
   z-index: 2;
 }
+
+/* line 215 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .bubble:hover {
   border: 2px dashed #9e9e9e;
 }
+
+/* line 218 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .jiggly {
   -webkit-animation: jiggle 0.2s infinite;
   -moz-animation: jiggle 0.2s infinite;
@@ -221,10 +298,14 @@ footer {
   -moz-transform: rotate(-1deg);
   transform: rotate(-1deg);
 }
+
+/* line 232 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .bouncing-arrow {
   -webkit-animation: bounce 1s infinite;
   animation: bounce 1s infinite;
 }
+
+/* line 226 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @-moz-keyframes jiggle {
   0% {
     transform: rotate(-1deg);
@@ -234,6 +315,8 @@ footer {
     transform: rotate(1deg);
   }
 }
+
+/* line 226 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @-webkit-keyframes jiggle {
   0% {
     transform: rotate(-1deg);
@@ -243,6 +326,8 @@ footer {
     transform: rotate(1deg);
   }
 }
+
+/* line 226 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @-o-keyframes jiggle {
   0% {
     transform: rotate(-1deg);
@@ -252,6 +337,8 @@ footer {
     transform: rotate(1deg);
   }
 }
+
+/* line 226 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @-ms-keyframes jiggle {
   0% {
     transform: rotate(-1deg);
@@ -261,6 +348,8 @@ footer {
     transform: rotate(1deg);
   }
 }
+
+/* line 226 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @keyframes jiggle {
   0% {
     transform: rotate(-1deg);
@@ -270,6 +359,8 @@ footer {
     transform: rotate(1deg);
   }
 }
+
+/* line 236 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @-moz-keyframes bounce {
   0% {
     top: 0;
@@ -283,6 +374,8 @@ footer {
     top: 0;
   }
 }
+
+/* line 236 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @-webkit-keyframes bounce {
   0% {
     top: 0;
@@ -296,6 +389,8 @@ footer {
     top: 0;
   }
 }
+
+/* line 236 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @-o-keyframes bounce {
   0% {
     top: 0;
@@ -309,6 +404,8 @@ footer {
     top: 0;
   }
 }
+
+/* line 236 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @-ms-keyframes bounce {
   0% {
     top: 0;
@@ -322,6 +419,8 @@ footer {
     top: 0;
   }
 }
+
+/* line 236 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @keyframes bounce {
   0% {
     top: 0;
