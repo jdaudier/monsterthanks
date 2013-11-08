@@ -242,3 +242,23 @@ footer
     -webkit-transform rotate(-1deg)
   50%
     -webkit-transform rotate(1deg)
+
+.bouncing-arrow
+  animation bounce 1s infinite
+  -webkit-animation bounce 1s infinite
+
+@keyframes bounce
+  0%
+    top 0px
+  50%
+    top 10px
+  100%
+    top 0px
+
+@-webkit-keyframes bounce
+  0%
+    top 0px
+  50%
+    top 10px
+  100%
+    top 0px

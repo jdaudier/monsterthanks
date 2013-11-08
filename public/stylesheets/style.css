@@ -246,3 +246,85 @@ footer {
     -webkit-transform: rotate(1deg);
   }
 }
+.bouncing-arrow {
+  animation: bounce 1s infinite;
+  -webkit-animation: bounce 1s infinite;
+}
+@-webkit-keyframes bounce {
+  0% {
+    top: 0px;
+  }
+
+  50% {
+    top: 10px;
+  }
+
+  100% {
+    top: 0px;
+  }
+}
+@-moz-keyframes bounce {
+  0% {
+    top: 0px;
+  }
+
+  50% {
+    top: 10px;
+  }
+
+  100% {
+    top: 0px;
+  }
+}
+@-webkit-keyframes bounce {
+  0% {
+    top: 0px;
+  }
+
+  50% {
+    top: 10px;
+  }
+
+  100% {
+    top: 0px;
+  }
+}
+@-o-keyframes bounce {
+  0% {
+    top: 0px;
+  }
+
+  50% {
+    top: 10px;
+  }
+
+  100% {
+    top: 0px;
+  }
+}
+@-ms-keyframes bounce {
+  0% {
+    top: 0px;
+  }
+
+  50% {
+    top: 10px;
+  }
+
+  100% {
+    top: 0px;
+  }
+}
+@keyframes bounce {
+  0% {
+    top: 0px;
+  }
+
+  50% {
+    top: 10px;
+  }
+
+  100% {
+    top: 0px;
+  }
+}
