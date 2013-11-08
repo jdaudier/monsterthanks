@@ -29,27 +29,27 @@ body
     text-shadow -1px 0 1px rgba(255,255,255,.8),
     1px 0 1px rgba(0,0,0,.8)
     z-index 3
-    transform rotateX(0deg) rotateY(-15deg) rotateZ(0deg)
     -webkit-transform rotateX(0deg) rotateY(-15deg) rotateZ(0deg)
+    transform rotateX(0deg) rotateY(-15deg) rotateZ(0deg)
   &:after
     color rgba(0,0,0,.11)
     z-index 2
-    transform scale(1.08,1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg,1deg)
     -webkit-transform scale(1.08,1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg,1deg)
+    transform scale(1.08,1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg,1deg)
   &:hover
     &:before
       color #fafafa
-      transform rotateX(0deg) rotateY(-70deg) rotateZ(0deg)
       -webkit-transform rotateX(0deg) rotateY(-70deg) rotateZ(0deg)
+      transform rotateX(0deg) rotateY(-70deg) rotateZ(0deg)
     &:after
-      transform scale(1.08,1) rotateX(0deg) rotateY(70deg) rotateZ(0deg) skew(0deg,22deg)
       -webkit-transform scale(1.08,1) rotateX(0deg) rotateY(70deg) rotateZ(0deg) skew(0deg,22deg)
+      transform scale(1.08,1) rotateX(0deg) rotateY(70deg) rotateZ(0deg) skew(0deg,22deg)
 
 .letter:before, .letter:after
   position absolute
   content attr(data-letter)
-  transform-origin top left
   -webkit-transform-origin top left
+  transform-origin top left
   top 0
   left 0
 
@@ -67,10 +67,10 @@ body
   height 100px
   font-size 3em
   letter-spacing 5px
-  animation-duration 2s
   -webkit-animation-duration 2s
-  animation-delay 2000
-  -webkit-animation-delay 2000
+  animation-duration 2s
+  -webkit-animation-delay 1s
+  animation-delay 1s
 
 .action-btn:hover
   background-color light-green
@@ -89,7 +89,7 @@ footer
   padding-top 120px
   text-align center
 
-#codepalette
+.codepalette
   color white
   margin-left 5px
 
@@ -116,10 +116,10 @@ footer
 .notice-me
   text-transform uppercase
   display inline-block
-  animation-duration 3s
   -webkit-animation-duration 3s
-  animation-iteration-count infinite
+  animation-duration 3s
   -webkit-animation-iteration-count infinite
+  animation-iteration-count infinite
   margin 0 30px
   font-size 1.4em
 
@@ -198,8 +198,6 @@ footer
   position relative
   padding 10px
   background light-gray
-  -webkit-border-radius 6px
-  -moz-border-radius 6px
   border-radius 6px
   z-index 1
   &:after
@@ -219,37 +217,23 @@ footer
 
 .jiggly
   -webkit-animation jiggle 0.2s infinite
-  -moz-animation-duration 0.2s
-  -moz-animation-name jiggle
-  -moz-animation-iteration-count infinite
+  -moz-animation jiggle 0.2s infinite
+  animation jiggle 0.2s infinite
   -webkit-transform rotate(-1deg)
   -moz-transform rotate(-1deg)
+  transform rotate(-1deg)
 
-@-moz-keyframes jiggle
+@keyframes jiggle
   0%
-    -moz-transform rotate(-1deg)
+    transform rotate(-1deg)
   50%
-    -moz-transform rotate(1deg)
-
-@-webkit-keyframes jiggle
-  0%
-    -webkit-transform rotate(-1deg)
-  50%
-    -webkit-transform rotate(1deg)
+    transform rotate(1deg)
 
 .bouncing-arrow
-  animation bounce 1s infinite
   -webkit-animation bounce 1s infinite
+  animation bounce 1s infinite
 
 @keyframes bounce
-  0%
-    top 0
-  50%
-    top 10px
-  100%
-    top 0
-
-@-webkit-keyframes bounce
   0%
     top 0
   50%
