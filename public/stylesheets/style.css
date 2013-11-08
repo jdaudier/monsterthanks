@@ -96,12 +96,12 @@ footer {
   color: #fff;
   margin-left: 5px;
 }
-.glyphicon {
+.down-arrow {
   font-size: 0.9em;
   color: #09b39c;
   margin-left: 40px;
 }
-.glyphicon:hover {
+.down-arrow:hover {
   color: #0acbb1;
 }
 .header {
@@ -128,6 +128,28 @@ footer {
   padding: 20px 40px 40px;
   background: #34495e;
   text-align: center;
+}
+#right-arrow,
+#left-arrow {
+  font-size: 3em;
+  color: #fff;
+  position: relative;
+  top: 476px;
+  z-index: 3;
+}
+#right-arrow:hover {
+  color: #9e9e9e;
+}
+#left-arrow:hover {
+  color: #9e9e9e;
+}
+#right-arrow {
+  float: right;
+  margin-right: 15px;
+}
+#left-arrow {
+  float: left;
+  margin-left: 15px;
 }
 .background {
   border-radius: 6px;
