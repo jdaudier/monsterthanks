@@ -75,7 +75,7 @@ $(function domReady() {
     // Gets position of a monster during the dragging
     $(".draggable").draggable({
       scroll: true,
-      containment: "window",
+      // containment: "window",
       start: function( event, ui) {
         $(this).find(".monster").removeClass('jiggly');
       },
