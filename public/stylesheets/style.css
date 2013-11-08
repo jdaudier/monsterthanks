@@ -246,7 +246,6 @@ footer {
 /* line 183 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .monster {
   cursor: move;
-  margin: 10px;
   width: 100px;
   height: 100px;
   position: absolute;
@@ -254,12 +253,12 @@ footer {
   left: 0;
 }
 
-/* line 192 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 191 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .monster:hover {
   border: 2px dashed #fff;
 }
 
-/* line 195 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 194 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .bubble {
   cursor: move;
   display: inline-block;
@@ -272,7 +271,7 @@ footer {
   z-index: 1;
 }
 
-/* line 205 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 204 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .bubble:after {
   content: "";
   position: absolute;
@@ -286,12 +285,12 @@ footer {
   z-index: 2;
 }
 
-/* line 217 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 216 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .bubble:hover {
   border: 2px dashed #9e9e9e;
 }
 
-/* line 220 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 219 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .jiggly {
   -webkit-animation: jiggle 0.2s infinite;
   -moz-animation: jiggle 0.2s infinite;
@@ -299,7 +298,7 @@ footer {
   -moz-transform: rotate(-1deg);
 }
 
-/* line 226 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 225 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 @-webkit-keyframes jiggle {
   0% {
     -webkit-transform: rotate(-1deg);
@@ -310,7 +309,7 @@ footer {
   }
 }
 
-/* line 232 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 231 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 @-moz-keyframes jiggle {
   0% {
     -moz-transform: rotate(-1deg);
@@ -321,13 +320,13 @@ footer {
   }
 }
 
-/* line 238 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 237 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .bouncing-arrow {
   -webkit-animation: bounce 1s infinite;
   animation: bounce 1s infinite;
 }
 
-/* line 242 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
+/* line 241 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @-moz-keyframes bounce {
   0% {
     top: 0;
@@ -342,7 +341,7 @@ footer {
   }
 }
 
-/* line 242 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
+/* line 241 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @-webkit-keyframes bounce {
   0% {
     top: 0;
@@ -357,7 +356,7 @@ footer {
   }
 }
 
-/* line 242 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
+/* line 241 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @-o-keyframes bounce {
   0% {
     top: 0;
@@ -372,7 +371,7 @@ footer {
   }
 }
 
-/* line 242 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
+/* line 241 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @-ms-keyframes bounce {
   0% {
     top: 0;
@@ -387,7 +386,7 @@ footer {
   }
 }
 
-/* line 242 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
+/* line 241 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @keyframes bounce {
   0% {
     top: 0;
