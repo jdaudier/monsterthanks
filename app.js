@@ -44,8 +44,8 @@ mongoose.connect(mongoURI);
 //setup our MongoDB Card collection
 var models = require('./models/cards');
 
-var Card = mongoose.model("Card", models.cardSchema);
-var Monster = mongoose.model("Monster", models.monsterSchema);
+var Card = mongoose.model('Card', models.cardSchema);
+var Monster = mongoose.model('Monster', models.monsterSchema);
 
 app.get('/', routes.index);
 // app.get('/users', user.list);
@@ -60,11 +60,11 @@ app.get('/new', function(req, res){
   }
 
   var id = card._id;
-  var path = "/edit/" + id;
+  var path = '/edit/' + id;
   //Save the Card document
   card.save(function(err){
     if (err) {
-      res.send(500, "Card is NOT saved");
+      res.send(500, 'Card is NOT saved');
     }
     else {
       res.redirect(path);
@@ -85,7 +85,7 @@ io.sockets.on('connection', function(socket) {
   socket.on('cardId', function(cardId) {
     Card.findOne({_id: cardId}, function(err, card){
       if (err) {
-        res.send(500, "Card is NOT found");
+        res.send(500, 'Card is NOT found');
       }
       else {
         // When I request a card, it only comes back to me instead of everyone else
@@ -101,7 +101,7 @@ io.sockets.on('connection', function(socket) {
         if (card.monsters[i].monsterId === draggedMonster.monsterId) {
           card.monsters[i].top = draggedMonster.top;
           card.monsters[i].left = draggedMonster.left;
-          // console.log("found monster: ", card.monsters[i]);
+          // console.log('found monster: ', card.monsters[i]);
           card.save(function (err, card) {
             if (err) {
               res.send(500, "Monster's new position is NOT saved");
@@ -118,7 +118,7 @@ io.sockets.on('connection', function(socket) {
               //     [ { _id: 52799a4a7776e20000000003,
               //       left: 25.905511811023622,
               //       monsterId: 0,
-              //       speechBubble: "this is my message",
+              //       speechBubble: 'this is my message',
               //       top: 41.77274870344178,
               //       height: 100,
               //       width: 100
@@ -138,7 +138,7 @@ io.sockets.on('connection', function(socket) {
         if (card.monsters[i].monsterId === resizedMonster.monsterId) {
           card.monsters[i].width = resizedMonster.width;
           card.monsters[i].height = resizedMonster.height;
-          // console.log("found monster: ", card.monsters[i]);
+          // console.log('found monster: ', card.monsters[i]);
 
           card.save(function (err, card) {
             if (err) {
@@ -159,7 +159,7 @@ io.sockets.on('connection', function(socket) {
       for (var i = 0; i < card.monsters.length; i++) {
         if (card.monsters[i].monsterId === messageEntered.monsterId) {
           card.monsters[i].speechBubble = messageEntered.message;
-          // console.log("found monster: ", card.monsters[i]);
+          // console.log('found monster: ', card.monsters[i]);
           card.save(function (err, card) {
             if (err) {
               res.send(500, "Monster's new message is NOT saved");

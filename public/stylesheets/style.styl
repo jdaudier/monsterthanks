@@ -187,6 +187,8 @@ footer
   width 100px
   height 100px
   position absolute // This constrains the empty space after a monster is resized
+  top 0 // This constrains the empty space after a monster is resized
+  left 0 // This constrains the empty space after a monster is resized
 
 .monster:hover
   border 2px dashed white
@@ -219,16 +221,20 @@ footer
 .jiggly
   -webkit-animation jiggle 0.2s infinite
   -moz-animation jiggle 0.2s infinite
-  animation jiggle 0.2s infinite
   -webkit-transform rotate(-1deg)
   -moz-transform rotate(-1deg)
-  transform rotate(-1deg)
 
-@keyframes jiggle
+@-webkit-keyframes jiggle
   0%
-    transform rotate(-1deg)
+    -webkit-transform rotate(-1deg)
   50%
-    transform rotate(1deg)
+    -webkit-transform rotate(1deg)
+
+@-moz-keyframes jiggle
+  0%
+    -moz-transform rotate(-1deg)
+  50%
+    -moz-transform rotate(1deg)
 
 .bouncing-arrow
   -webkit-animation bounce 1s infinite
