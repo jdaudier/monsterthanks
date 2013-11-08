@@ -48,6 +48,7 @@ $(function domReady() {
               $(element).height(renderHeight);
               $(element).width(renderWidth);
               $(element).parent().css({"height": renderHeight + "px", "width": renderWidth + "px"});
+              $(element).removeClass('jiggly');
             }
           });
         }
@@ -75,6 +76,9 @@ $(function domReady() {
     $(".draggable").draggable({
       scroll: true,
       containment: "window",
+      start: function( event, ui) {
+        $(this).find(".monster").removeClass('jiggly');
+      },
       drag: function( event, ui ) {
         var top = ui.offset.top;
         var left = ui.offset.left;

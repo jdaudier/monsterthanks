@@ -222,3 +222,23 @@ footer
 
 .bubble:hover
   border 2px dashed gray
+
+.jiggly
+  -webkit-animation jiggle 0.2s infinite
+  -moz-animation-duration 0.2s
+  -moz-animation-name jiggle
+  -moz-animation-iteration-count infinite
+  -webkit-transform rotate(-1deg)
+  -moz-transform rotate(-1deg)
+
+@-moz-keyframes jiggle
+  0%
+    -moz-transform rotate(-1deg)
+  50%
+    -moz-transform rotate(1deg)
+
+@-webkit-keyframes jiggle
+  0%
+    -webkit-transform rotate(-1deg)
+  50%
+    -webkit-transform rotate(1deg)
