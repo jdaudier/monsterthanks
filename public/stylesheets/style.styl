@@ -181,13 +181,17 @@ footer
   width 100px // This constrains the empty space after a monster is resized
   height 100px // This constrains the empty space after a monster is resized
 
+.ui-wrapper
+  position relative
+  margin-bottom 10px
+
 .monster
   cursor move
-  width 100px
-  height 100px
   position absolute // This constrains the empty space after a monster is resized
   top 0 // This constrains the empty space after a monster is resized
   left 0 // This constrains the empty space after a monster is resized
+  width 100px
+  height 100px
 
 .monster:hover
   border 2px dashed white
@@ -201,7 +205,7 @@ footer
   padding 10px
   background light-gray
   border-radius 6px
-  z-index 1
+  z-index 2
   &:after
     content ""
     position absolute
@@ -212,7 +216,7 @@ footer
     border-color light-gray transparent
     display block
     width 0
-    z-index 2
+    z-index 1
 
 .bubble:hover
   border 2px dashed gray

@@ -126,6 +126,7 @@ $(function domReady() {
             $(element).height(renderHeight);
             $(element).width(renderWidth);
             $(element).parent().css({"height": renderHeight + "px", "width": renderWidth + "px"});
+            $(element).removeClass('jiggly');
           }
         });
       }
