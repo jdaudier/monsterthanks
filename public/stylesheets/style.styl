@@ -183,9 +183,9 @@ footer
 
 .monster
   cursor move
-  position absolute // This constrains the empty space after a monster is resized
-  top 0 // This constrains the empty space after a monster is resized
-  left 0 // This constrains the empty space after a monster is resized
+  // position absolute // This constrains the empty space after a monster is resized
+  // top 0 // This constrains the empty space after a monster is resized
+  // left 0 // This constrains the empty space after a monster is resized
   width 100px
   height 100px
 
@@ -216,6 +216,9 @@ footer
 
 .bubble:hover
   border 2px dashed gray
+
+.editable-bubble, .old-bubble
+  margin-bottom 30px
 
 .jiggly
   -webkit-animation jiggle 0.2s infinite

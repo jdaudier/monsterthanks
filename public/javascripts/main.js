@@ -165,25 +165,26 @@ $(function domReady() {
       var docHeight = $(document).height();
       var widthPercent = (width / docWidth) * 100;
       var heightPercent = (height / docHeight) * 100;
-      var monsterId = $(this).find(".monster").data("id");
+      var $monsterImg = $(this).find(".monster");
+      var monsterId = $monsterImg.data("id");
       // console.log("resized width: ", width);
       // console.log("resized height: ",height);
       // console.log("docWidth: ", docWidth);
       // console.log("docHeight: ", docHeight);
       // console.log("resized widthPercent: ", widthPercent);
       // console.log("resized heightPercent: ", heightPercent);
-      var cardId = $(this).find(".monster").data("card-id");
 
+      // $monsterImg.parent().css({"position": "absolute", "top": 0, "left": 0});
+
+      var cardId = $monsterImg.data("card-id");
       var resizedMonster = {
         id: cardId,
         monsterId: monsterId,
         width: widthPercent,
         height: heightPercent
       };
-
       // console.log("resizedMonster: ", resizedMonster);
       socket.emit("resizedMonster", resizedMonster);
-
     }
   });
 
@@ -194,8 +195,8 @@ $(function domReady() {
 
   // Adding speech bubbles
   $(".draggable").dblclick(function(e) {
-    console.log(e);
-    console.log($(this));
+    // console.log(e);
+    // console.log($(this));
     var $monsterImg = $(e.target);
 
     //$(this) = draggable div
