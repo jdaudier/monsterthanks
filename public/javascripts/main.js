@@ -34,6 +34,16 @@ $(function domReady() {
       var cardId = $('.draggable:first .monster').data("card-id");
       var docHeight = $(document).height();
       var docWidth = $(document).width();
+      var newBackground = card.background;
+
+      if (card.background && card._id === cardId) {
+        $('.background').css({
+          'background': 'url(../images/backgrounds/' + newBackground + '.jpg)',
+          'background-size': 'cover',
+          'background-repeat': 'no-repeat',
+          'min-height': '1024px'
+        });
+      }
 
       if (card) {
         for (var i = 0; i < card.monsters.length; i++) {
@@ -239,12 +249,48 @@ $(function domReady() {
   }); // End of adding a speech bubble
 
 
+  $('#right-arrow').click(function(){
+    var cardId = $('.draggable:first .monster').data("card-id");
+    var backgroundUrl = $(this).parent().css('background-image').replace(/^url|[\(\)]/g, '');
+    // The lastIndexOf() method returns the position of the last occurrence of a specified value in a string.
+    var i = backgroundUrl.lastIndexOf("/");
+    var filename = backgroundUrl.substring(i+1,backgroundUrl.length-4);
+    var currentCard = {
+      id: cardId,
+      background: filename
+    };
+    // console.log("backgroundChanged: ", backgroundChanged);
+    socket.emit("rightArrowClicked", currentCard);
 
+  });
 
+  $('#left-arrow').click(function(){
+    var cardId = $('.draggable:first .monster').data("card-id");
+    var backgroundUrl = $(this).parent().css('background-image').replace(/^url|[\(\)]/g, '');
+    // The lastIndexOf() method returns the position of the last occurrence of a specified value in a string.
+    var i = backgroundUrl.lastIndexOf("/");
+    var filename = backgroundUrl.substring(i+1,backgroundUrl.length-4);
+    var currentCard = {
+      id: cardId,
+      background: filename
+    };
+    // console.log("backgroundChanged: ", currentCard);
+    socket.emit("leftArrowClicked", currentCard);
 
+  });
 
-
-
+  socket.on('backgroundSaved', function(card){
+    var cardId = $('.draggable:first .monster').data("card-id");
+    var newBackground = card.background;
+    if (card._id === cardId) {
+      $('.background').css({
+        'background': 'url(../images/backgrounds/' + newBackground + '.jpg)',
+        'background-size': 'cover',
+        'background-repeat': 'no-repeat',
+        'min-height': '1024px'
+      });
+    }
+  });
 
 
 

@@ -173,6 +173,64 @@ io.sockets.on('connection', function(socket) {
     });
   });
 
+  var backgroundArray = ['backyard', 'desert2', 'fishes', 'hills', 'mars', 'red-room', 'aquarium', 'bench', 'seascape', 'blue-stage', 'city', 'corridor', 'desert-oasis', 'sheep', 'desert', 'egypt', 'field', 'mtns', 'summer-sea-view', 'park', 'sheeps-on-a-hill', 'sea-voyage', 'seascape2', 'snow', 'spaceship-on-mars', 'spaceship', 'stage', 'sunset-sheep', 'underwater', 'watertower', 'yellow-room', 'dark-forest'];
+
+  var goToNextImg = function(currentImg) {
+    if (currentImg === 'dark-forest') {
+      return 'backyard';
+    }
+    else {
+      var currentIndex = backgroundArray.indexOf(currentImg);
+      return backgroundArray[currentIndex + 1];
+    }
+  };
+
+  var goToPrevImg = function(currentImg) {
+    if (currentImg === 'backyard') {
+      return 'dark-forest';
+    }
+    else {
+      var currentIndex = backgroundArray.indexOf(currentImg);
+      return backgroundArray[currentIndex - 1];
+    }
+  };
+
+  socket.on('rightArrowClicked', function(currentCard) {
+
+    Card.findOne({_id: currentCard.id}, function(err, card){
+      var newBackground = goToNextImg(currentCard.background);
+      card.background = newBackground;
+      card.save(function (err, card) {
+        if (err) {
+          res.send(500, "New background is NOT saved");
+        }
+        else {
+          socket.emit('backgroundSaved', card);
+          console.log(card);
+        }
+      });
+    });
+  });
+
+  socket.on('leftArrowClicked', function(currentCard) {
+
+    Card.findOne({_id: currentCard.id}, function(err, card){
+      var newBackground = goToPrevImg(currentCard.background);
+      card.background = newBackground;
+      card.save(function (err, card) {
+        if (err) {
+          res.send(500, "Card's new background is NOT saved");
+        }
+        else {
+          socket.emit('backgroundSaved', card);
+          console.log(card);
+        }
+      });
+    });
+  });
+
+
+
 
 
 
