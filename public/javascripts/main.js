@@ -38,10 +38,9 @@ $(function domReady() {
 
       if (card.background && card._id === cardId) {
         $('.background').css({
-          'background': 'url(../images/backgrounds/' + newBackground + '.jpg)',
-          'background-size': 'cover',
-          'background-repeat': 'no-repeat',
-          'min-height': '1024px'
+          'background': 'url(../images/backgrounds/' + newBackground + '.png)',
+          'background-size': '100% 100%',
+          'background-repeat': 'no-repeat'
         });
       }
 
@@ -284,10 +283,9 @@ $(function domReady() {
     var newBackground = card.background;
     if (card._id === cardId) {
       $('.background').css({
-        'background': 'url(../images/backgrounds/' + newBackground + '.jpg)',
-        'background-size': 'cover',
+        'background': 'url(../images/backgrounds/' + newBackground + '.png)',
+        'background-size': '100% 100%',
         'background-repeat': 'no-repeat',
-        'min-height': '1024px'
       });
     }
   });
