@@ -205,8 +205,7 @@ io.sockets.on('connection', function(socket) {
           res.send(500, "New background is NOT saved");
         }
         else {
-          socket.emit('backgroundSaved', card);
-          console.log(card);
+          io.sockets.emit('backgroundSaved', card);
         }
       });
     });
@@ -222,8 +221,7 @@ io.sockets.on('connection', function(socket) {
           res.send(500, "Card's new background is NOT saved");
         }
         else {
-          socket.emit('backgroundSaved', card);
-          console.log(card);
+          io.sockets.emit('backgroundSaved', card);
         }
       });
     });

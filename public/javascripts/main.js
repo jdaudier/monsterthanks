@@ -81,7 +81,6 @@ $(function domReady() {
       }
     });
 
-
     // Gets position of a monster during the dragging
     $(".draggable").draggable({
       scroll: true,
@@ -163,7 +162,6 @@ $(function domReady() {
       }
     }
   });
-
 
   // Gets size of monster during the resizing
   $(".monster").resizable({
