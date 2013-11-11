@@ -270,11 +270,6 @@ $(function domReady() {
     };
     // console.log("backgroundChanged: ", backgroundChanged);
     socket.emit("rightArrowClicked", currentCard);
-    console.log("cardId: ", cardId);
-    console.log("backgroundUrl: ", backgroundUrl);
-    console.log("filename: ", filename);
-    console.log("currentCard: ", currentCard);
-
   });
 
   $('#left-arrow').click(function(){
@@ -290,11 +285,6 @@ $(function domReady() {
     };
     // console.log("backgroundChanged: ", currentCard);
     socket.emit("leftArrowClicked", currentCard);
-    console.log("cardId: ", cardId);
-    console.log("backgroundUrl: ", backgroundUrl);
-    console.log("filename: ", filename);
-    console.log("currentCard: ", currentCard);
-
   });
 
   socket.on('backgroundSaved', function(card){
