@@ -260,43 +260,6 @@ $(function domReady() {
 
   }); // END OF ADDING A SPEECH BUBBLE
 
-  // EDITING A NEW SPEECH BUBBLES
-
-  // $('.draggable').dblclick('.editable-bubble', function(e) {
-  //   // $(this) = draggable div
-  //   var source = $("#editable-speech-bubble").html();
-  //   var bubbleTemplate = Handlebars.compile (source);
-  //   var messageObj = {
-  //     defaultMsg: "Enter your message"
-  //   };
-  //   bubbleTemplate = bubbleTemplate(messageObj);
-  //   $(bubbleTemplate).prependTo($(this));
-
-  //   $(this).addClass("has-bubble");
-
-  //   $('.message').on('keyup', function() {
-  //     $el = $(this); // This is the textarea
-  //     var message = $el.val();
-  //     var monsterId = $monsterImg.data("id");
-  //     var cardId = $monsterImg.data("card-id");
-
-  //     var messageEntered = {
-  //       id: cardId,
-  //       monsterId: monsterId,
-  //       message: message
-  //     };
-  //     // console.log("messageEntered: ", messageEntered);
-  //     socket.emit("messageEntered", messageEntered);
-  //   });
-
-  //   $(".message").blur(function() {
-  //     $el = $(this); // This is the textarea
-  //     var message = $el.val();
-  //     $el.parent().parent().text(message);
-  //   });
-  // });
-
-
   // EDITING AN OLD SPEECH BUBBLES
   $(".bubble-container").dblclick(function(e) {
     // $(this) = .bubble-container div
@@ -343,15 +306,6 @@ $(function domReady() {
     });
 
   }); // END OF EDITING A SPEECH BUBBLE
-
-
-
-
-
-
-
-
-
 
   // CHANGING BACKGROUNDS ON RIGHT ARROW CLICK
   $('#right-arrow').click(function(){
