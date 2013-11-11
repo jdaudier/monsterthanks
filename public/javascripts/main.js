@@ -54,11 +54,18 @@ $(function domReady() {
                 var renderLeft = convertToAbsoluteLeft(docWidth, card.monsters[i].left);
                 var renderWidth = convertToAbsoluteWidth(docWidth, card.monsters[i].width);
                 var renderHeight = convertToAbsoluteHeight(docHeight, card.monsters[i].height);
+                console.log("monster width: ", card.monsters[i].width);
+                console.log("monster height: ", card.monsters[i].height);
+
                 $(element).parents(".draggable").css({"position": "absolute", "top": renderTop + "px", "left": renderLeft + "px"});
                 $(element).height(renderHeight);
                 $(element).width(renderWidth);
                 $(element).parent().css({"height": renderHeight + "px", "width": renderWidth + "px"});
                 $(element).removeClass('jiggly');
+                // console.log("ON LOAD renderTop: ", renderTop);
+                // console.log("ON LOAD renderLeft: ", renderLeft);
+                // console.log("ON LOAD renderWidth: ", renderWidth);
+                // console.log("ON LOAD renderHeight: ", renderHeight);
               }
             });
           }
@@ -135,6 +142,10 @@ $(function domReady() {
             $(element).width(renderWidth);
             $(element).parent().css({"height": renderHeight + "px", "width": renderWidth + "px"});
             $(element).removeClass('jiggly');
+            // console.log("ON CARD SAVE renderTop: ", renderTop);
+            // console.log("ON CARD SAVE renderLeft: ", renderLeft);
+            // console.log("ON CARD SAVE renderWidth: ", renderWidth);
+            // console.log("ON CARD SAVE renderHeight: ", renderHeight);
           }
         });
       }
@@ -248,31 +259,41 @@ $(function domReady() {
 
   $('#right-arrow').click(function(){
     var cardId = $('.draggable:first .monster').data("card-id");
-    var backgroundUrl = $(this).parent().css('background-image').replace(/^url|[\(\)]/g, '');
+    var backgroundUrl = $(this).parent().css('background-image');
     // The lastIndexOf() method returns the position of the last occurrence of a specified value in a string.
-    var i = backgroundUrl.lastIndexOf("/");
-    var filename = backgroundUrl.substring(i+1,backgroundUrl.length-4);
+    var slash = backgroundUrl.lastIndexOf("/");
+    var period = backgroundUrl.lastIndexOf(".");
+    var filename = backgroundUrl.substring(slash+1, period);
     var currentCard = {
       id: cardId,
       background: filename
     };
     // console.log("backgroundChanged: ", backgroundChanged);
     socket.emit("rightArrowClicked", currentCard);
+    console.log("cardId: ", cardId);
+    console.log("backgroundUrl: ", backgroundUrl);
+    console.log("filename: ", filename);
+    console.log("currentCard: ", currentCard);
 
   });
 
   $('#left-arrow').click(function(){
     var cardId = $('.draggable:first .monster').data("card-id");
-    var backgroundUrl = $(this).parent().css('background-image').replace(/^url|[\(\)]/g, '');
+    var backgroundUrl = $(this).parent().css('background-image');
     // The lastIndexOf() method returns the position of the last occurrence of a specified value in a string.
-    var i = backgroundUrl.lastIndexOf("/");
-    var filename = backgroundUrl.substring(i+1,backgroundUrl.length-4);
+    var slash = backgroundUrl.lastIndexOf("/");
+    var period = backgroundUrl.lastIndexOf(".");
+    var filename = backgroundUrl.substring(slash+1, period);
     var currentCard = {
       id: cardId,
       background: filename
     };
     // console.log("backgroundChanged: ", currentCard);
     socket.emit("leftArrowClicked", currentCard);
+    console.log("cardId: ", cardId);
+    console.log("backgroundUrl: ", backgroundUrl);
+    console.log("filename: ", filename);
+    console.log("currentCard: ", currentCard);
 
   });
 
