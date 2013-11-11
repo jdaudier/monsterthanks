@@ -18,13 +18,14 @@ $(function domReady() {
     return (docHeight * heightPercent) / 100;
   };
 
-  // Creates a new Card
+  // CREATING A NEW CARD
   $(".action-btn").click(function(e) {
     window.location.href = "/new";
   });
 
   $.localScroll();
 
+  // RENDERING MONSTERS TO THEIR SAVED LOCATIONS ON LOAD
   socket.on("connect", function(){
     var cardId = $('.draggable:first .monster').data("card-id");
     socket.emit("cardId", cardId);
@@ -54,8 +55,8 @@ $(function domReady() {
                 var renderLeft = convertToAbsoluteLeft(docWidth, card.monsters[i].left);
                 var renderWidth = convertToAbsoluteWidth(docWidth, card.monsters[i].width);
                 var renderHeight = convertToAbsoluteHeight(docHeight, card.monsters[i].height);
-                console.log("monster width: ", card.monsters[i].width);
-                console.log("monster height: ", card.monsters[i].height);
+                // console.log("monster width: ", card.monsters[i].width);
+                // console.log("monster height: ", card.monsters[i].height);
 
                 $(element).parents(".draggable").css({"position": "absolute", "top": renderTop + "px", "left": renderLeft + "px"});
                 $(element).height(renderHeight);
@@ -88,7 +89,7 @@ $(function domReady() {
       }
     });
 
-    // Gets position of a monster during the dragging
+    // GETTING POSITION OF A MONSTER WHILE DRAGGING
     $(".draggable").draggable({
       scroll: true,
       // containment: "window",
@@ -123,6 +124,7 @@ $(function domReady() {
     });
   });
 
+  // RERENDERING MONSTER LOCATION WHENEVER IT'S MOVED
   socket.on('cardSaved', function(card){
     var cardId = $('.draggable:first .monster').data("card-id");
     var docHeight = $(document).height();
@@ -152,6 +154,7 @@ $(function domReady() {
     }
   });
 
+  // SHOWING THE MESSAGES AS USERS ARE TYPING
   socket.on('msgSaved', function(card){
     var cardId = $('.draggable:first .monster').data("card-id");
 
@@ -174,7 +177,7 @@ $(function domReady() {
     }
   });
 
-  // Gets size of monster during the resizing
+  // GETTING THE SIZE OF THE MONSTER WHILE THEY'RE RESIZED
   $(".monster").resizable({
     resize: function( event, ui ) {
       var width = ui.size.width;
@@ -211,13 +214,13 @@ $(function domReady() {
   //   }
   // });
 
-  // Adding speech bubbles
+  // ADDING SPEECH BUBBLES
   $(".draggable").dblclick(function(e) {
     // console.log(e);
     // console.log($(this));
     var $monsterImg = $(e.target);
 
-    //$(this) = draggable div
+    // $(this) = draggable div
     if ($(e.target).hasClass("monster")===false || $(this).hasClass("has-bubble")===true || $(this).children().children().hasClass("bubble")===true) {
       return false; // Limit 1 speech bubble per monster
     }
@@ -243,6 +246,46 @@ $(function domReady() {
         monsterId: monsterId,
         message: message
       };
+      // console.log("messageEntered: ", messageEntered);
+      socket.emit("messageEntered", messageEntered);
+    });
+
+    $(".message").blur(function() {
+      $el = $(this); // This is the textarea
+      var message = $el.val();
+      $el.parent().parent().text(message);
+    });
+
+  }); // END OF ADDING A SPEECH BUBBLE
+
+
+  // EDITING AN OLD SPEECH BUBBLES
+  $(".bubble-container").dblclick(function(e) {
+    var $bubbleContainer = $(e.target); // Same as $(this)
+    var $monsterImg = $(this).parent().find('.monster');
+    var $draggableDiv = $(this).parent();
+
+    var source = $("#editable-speech-bubble").html();
+    var bubbleTemplate = Handlebars.compile (source);
+    var messageObj = {
+      defaultMsg: ""
+    };
+    bubbleTemplate = bubbleTemplate(messageObj);
+    $(this).html(bubbleTemplate);
+
+    $draggableDiv.addClass("has-bubble");
+
+    $('.message').on('keyup', function() {
+      $el = $(this); // This is the textarea
+      var message = $el.val();
+      var monsterId = $monsterImg.data("id");
+      var cardId = $monsterImg.data("card-id");
+
+      var messageEntered = {
+        id: cardId,
+        monsterId: monsterId,
+        message: message
+      };
 
       // console.log("messageEntered: ", messageEntered);
       socket.emit("messageEntered", messageEntered);
@@ -254,9 +297,18 @@ $(function domReady() {
       $el.parent().parent().text(message);
     });
 
-  }); // End of adding a speech bubble
+  }); // END OF EDITING A SPEECH BUBBLE
 
 
+
+
+
+
+
+
+
+
+  // CHANGING BACKGROUNDS ON RIGHT ARROW CLICK
   $('#right-arrow').click(function(){
     var cardId = $('.draggable:first .monster').data("card-id");
     var backgroundUrl = $(this).parent().css('background-image');
@@ -272,6 +324,7 @@ $(function domReady() {
     socket.emit("rightArrowClicked", currentCard);
   });
 
+  // CHANGING BACKGROUNDS ON LEFT ARROW CLICK
   $('#left-arrow').click(function(){
     var cardId = $('.draggable:first .monster').data("card-id");
     var backgroundUrl = $(this).parent().css('background-image');
@@ -287,6 +340,7 @@ $(function domReady() {
     socket.emit("leftArrowClicked", currentCard);
   });
 
+  // RELOAD BACKGROUND IMAGE WHENEVER IT'S CHANGED
   socket.on('backgroundSaved', function(card){
     var cardId = $('.draggable:first .monster').data("card-id");
     var newBackground = card.background;
