@@ -231,11 +231,8 @@ io.sockets.on('connection', function(socket) {
 
 
 
-
-
-
 }); // Socket connection CLOSES
 
-server.listen(3000, function(){
+server.listen(port, function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
