@@ -260,14 +260,14 @@ $(function domReady() {
 
   }); // END OF ADDING A SPEECH BUBBLE
 
-  // EDITING AN OLD SPEECH BUBBLES
-  $(".bubble-container").dblclick(function(e) {
+  // EDITING A SPEECH BUBBLE
+  $('.bubble-container').dblclick(function(e) {
     // $(this) = .bubble-container div
     var $monsterImg = $(this).parent().find('.monster');
     var $draggableDiv = $(this).parent();
     var oldMsg = $(this).children().text();
 
-    var source = $("#editable-speech-bubble").html();
+    var source = $('#editable-speech-bubble').html();
     var bubbleTemplate = Handlebars.compile (source);
     var messageObj = {
       defaultMsg: "Enter your message"
@@ -276,6 +276,9 @@ $(function domReady() {
     $(this).html(bubbleTemplate);
 
     $draggableDiv.addClass("has-bubble");
+
+    var $textArea = $(this).find('.message');
+    $textArea.val(oldMsg);
 
     $('.message').on('keyup', function() {
       $el = $(this); // This is the textarea
