@@ -74,6 +74,7 @@ $(function domReady() {
           if (card.monsters[i].speechBubble && card._id === cardId) {
             $('.monster').each(function(index, element){
               // element = this (monster img)
+
               if (index === card.monsters[i].monsterId) {
                 var source = $("#speech-bubble").html();
                 var bubbleTemplate = Handlebars.compile (source);
@@ -231,7 +232,8 @@ $(function domReady() {
       defaultMsg: "Enter your message"
     };
     bubbleTemplate = bubbleTemplate(messageObj);
-    $(bubbleTemplate).prependTo($(this));
+
+    $monsterImg.parent().prev().html(bubbleTemplate);
 
     $(this).addClass("has-bubble");
 
@@ -258,17 +260,54 @@ $(function domReady() {
 
   }); // END OF ADDING A SPEECH BUBBLE
 
+  // EDITING A NEW SPEECH BUBBLES
+
+  // $('.draggable').dblclick('.editable-bubble', function(e) {
+  //   // $(this) = draggable div
+  //   var source = $("#editable-speech-bubble").html();
+  //   var bubbleTemplate = Handlebars.compile (source);
+  //   var messageObj = {
+  //     defaultMsg: "Enter your message"
+  //   };
+  //   bubbleTemplate = bubbleTemplate(messageObj);
+  //   $(bubbleTemplate).prependTo($(this));
+
+  //   $(this).addClass("has-bubble");
+
+  //   $('.message').on('keyup', function() {
+  //     $el = $(this); // This is the textarea
+  //     var message = $el.val();
+  //     var monsterId = $monsterImg.data("id");
+  //     var cardId = $monsterImg.data("card-id");
+
+  //     var messageEntered = {
+  //       id: cardId,
+  //       monsterId: monsterId,
+  //       message: message
+  //     };
+  //     // console.log("messageEntered: ", messageEntered);
+  //     socket.emit("messageEntered", messageEntered);
+  //   });
+
+  //   $(".message").blur(function() {
+  //     $el = $(this); // This is the textarea
+  //     var message = $el.val();
+  //     $el.parent().parent().text(message);
+  //   });
+  // });
+
 
   // EDITING AN OLD SPEECH BUBBLES
   $(".bubble-container").dblclick(function(e) {
-    var $bubbleContainer = $(e.target); // Same as $(this)
+    // $(this) = .bubble-container div
     var $monsterImg = $(this).parent().find('.monster');
     var $draggableDiv = $(this).parent();
+    var oldMsg = $(this).children().text();
 
     var source = $("#editable-speech-bubble").html();
     var bubbleTemplate = Handlebars.compile (source);
     var messageObj = {
-      defaultMsg: ""
+      defaultMsg: "Enter your message"
     };
     bubbleTemplate = bubbleTemplate(messageObj);
     $(this).html(bubbleTemplate);
@@ -294,7 +333,13 @@ $(function domReady() {
     $(".message").blur(function() {
       $el = $(this); // This is the textarea
       var message = $el.val();
-      $el.parent().parent().text(message);
+
+      if (message === "") {
+        $el.parent().parent().text(oldMsg);
+      }
+      else {
+        $el.parent().parent().text(message);
+      }
     });
 
   }); // END OF EDITING A SPEECH BUBBLE
