@@ -240,6 +240,11 @@ $(function domReady() {
 
     $(this).addClass("has-bubble");
 
+    // ADDING TYPING SOUND
+    $('.message').on('keydown', function() {
+      $('.typing-sound').get(0).play();
+    });
+
     $('.message').on('keyup', function() {
       $el = $(this); // This is the textarea
       var message = $el.val();
@@ -282,6 +287,11 @@ $(function domReady() {
 
     var $textArea = $(this).find('.message');
     $textArea.val(oldMsg);
+
+    // ADDING TYPING SOUND
+    $('.message').on('keydown', function() {
+      $('.typing-sound').get(0).play();
+    });
 
     $('.message').on('keyup', function() {
       $el = $(this); // This is the textarea
