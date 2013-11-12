@@ -2,22 +2,23 @@ extends layout
 
 block content
   .hero
-    span.letter(data-letter='M') M
-    span.letter(data-letter='O')
-      img.jiggly.hiding(src='/images/monsters/monster43green.svg', alt='monster')
-    span.letter(data-letter='N') N
-    span.letter(data-letter='S') S
-    span.letter(data-letter='T') T
-    span.letter(data-letter='E') E
-    span.letter(data-letter='R') R
-    br
-    span.letter(data-letter='T') T
-    span.letter(data-letter='H') H
-    span.letter(data-letter='A') A
-    span.letter(data-letter='N') N
-    span.letter(data-letter='K') K
-    span.letter(data-letter='S') S
-    br
+    .monster-header
+      span.letter(data-letter='M') M
+      span.letter(data-letter='O')
+        img.jiggly.hiding-monster(src='/images/monsters/monster43green.svg', alt='monster')
+      span.letter(data-letter='N') N
+      span.letter(data-letter='S') S
+      span.letter(data-letter='T') T
+      span.letter(data-letter='E') E
+      span.letter(data-letter='R') R
+    .thanks-header
+      span.letter(data-letter='T') T
+      span.letter(data-letter='H') H
+      span.letter(data-letter='A') A
+      span.letter(data-letter='N') N
+      span.letter(data-letter='K') K
+      span.letter(data-letter='S') S
+    h1.subtitle An interactive group thank you card
     button.btn.btn-primary.btn-lg.btn-block.action-btn.animated.bounceInUp(type='button') start a card
   footer
     p.maker Made with ♥ by

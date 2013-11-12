@@ -15,6 +15,9 @@ body
   font-family 'Lato', sans-serif
   background-color light-gray
 
+.hero
+  text-align center
+
 .letter
   display inline-block
   font-weight 900
@@ -23,7 +26,9 @@ body
   position relative
   color green
   transform-style preserve-3d
-  perspective 400px
+  -webkit-transform-style preserve-3d
+  // perspective 400px
+  // -webkit-perspective 400
   z-index 1
   &:before
     color #fff
@@ -57,12 +62,18 @@ body
 .letter, .letter:before, .letter:after
   transition all 0.3s ease-in-out
 
-.hiding
+.hiding-monster
   margin-bottom 22px
   margin-left 5px
 
-.hero
-  text-align center
+.subtitle
+  font-family 'Josefin Sans', sans-serif
+  font-weight 300
+  color almost-black
+  margin-bottom 60px
+  font-size 3em
+  letter-spacing 2px
+  word-spacing 10px
 
 .action-btn
   text-transform uppercase
