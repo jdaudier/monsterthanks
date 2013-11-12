@@ -156,7 +156,7 @@ $(function domReady() {
           }
         });
       }
-      if (card.monsters[i].height && card._id === cardId) {
+      if (card.monsters[i].top && card._id === cardId) {
         $('.entrance-sound').get(0).play();
       }
     }
