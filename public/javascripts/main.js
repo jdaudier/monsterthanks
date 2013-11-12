@@ -121,11 +121,14 @@ $(function domReady() {
 
         // console.log("draggedMonster: ", draggedMonster);
         socket.emit("draggedMonster", draggedMonster);
+      },
+      stop: function( event, ui ) {
+        $('.entrance-sound').get(0).play();
       }
     });
   });
 
-  // RERENDERING MONSTER LOCATION WHENEVER IT'S MOVED
+  // RE-RENDERING MONSTER LOCATION WHENEVER IT'S MOVED
   socket.on('cardSaved', function(card){
     var cardId = $('.draggable:first .monster').data("card-id");
     var docHeight = $(document).height();

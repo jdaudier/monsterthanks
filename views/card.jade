@@ -24,4 +24,6 @@ block content
             .bubble-container
             img.monster.jiggly(src='/images/monsters/monster' + monster.monsterId + '.svg', alt='monster' data-id=monster.monsterId, data-card-id=id)
 
+    audio.entrance-sound(src='/sounds/monster-entrance.mp3', preload='auto')
+
     include speechbubble.html
