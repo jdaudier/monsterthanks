@@ -9,10 +9,9 @@ Monster Thanks is an interactive thank you card that enables _real-time_ collabo
 2. Share the link with all your friends
 3. Choose your background
 4. Choose a monster and drag it to the card
-5. Add a message bubble next to your monster
+5. Add a speech bubble next to your monster (double click on the speech bubble to edit it)
 6. Other recipients of the link can come and add their own monster
-7. Save the card when everyone is done with it
-8. Send the link to the recipient (card is locked)
+7. Send the link to the recipient
 
 ### Client-Side
 * jQuery
@@ -36,7 +35,7 @@ Monster Thanks is an interactive thank you card that enables _real-time_ collabo
 * Copy link feature (like GitHub)
 * Send email with link to other participants
 * Send email with link to recipient
-* User can come back and edit the text or change monster
+* Ability to delete a monster
 
 ### Questions:
 1. __SOLVED:__ How do I load the monster (along with the position and message bubble) that someone else has created before me?
