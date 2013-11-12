@@ -27,6 +27,8 @@ $(function domReady() {
 
   // RENDERING MONSTERS TO THEIR SAVED LOCATIONS ON LOAD
   socket.on("connect", function(){
+    $('#myModal').modal();
+
     var cardId = $('.draggable:first .monster').data("card-id");
     socket.emit("cardId", cardId);
 
