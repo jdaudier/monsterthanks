@@ -139,13 +139,13 @@ footer {
 }
 
 /* line 107 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
-.codepalette {
+.footer-link {
   color: #fff;
   margin-left: 5px;
 }
 
 /* line 111 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
-.codepalette:hover {
+.footer-link:hover {
   color: #fff;
 }
 
