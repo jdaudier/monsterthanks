@@ -24,7 +24,13 @@ block content
             .bubble-container
             img.monster.jiggly(src='/images/monsters/monster' + monster.monsterId + '.svg', alt='monster' data-id=monster.monsterId, data-card-id=id)
 
-    audio.entrance-sound(src='/sounds/monster-entrance.ogg', preload='auto')
-    audio.typing-sound(src='/sounds/typing.ogg', preload='auto')
+    audio.entrance-sound
+      source(src='/sounds/monster-entrance.ogg', preload='auto', type='audio/ogg')
+      source(src='/sounds/monster-entrance.mp3', preload='auto', type='audio/mpeg')
+
+    audio.typing-sound
+      source(src='/sounds/typing.wav', preload='auto', type='audio/wav')
+      source(src='/sounds/typing.mp3', preload='auto', type='audio/mpeg')
+
 
     include speechbubble.html
