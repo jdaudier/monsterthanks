@@ -122,6 +122,7 @@ $(function domReady() {
         // console.log("draggedMonster: ", draggedMonster);
         socket.emit("draggedMonster", draggedMonster);
       },
+      // ADDING DRAGGING SOUND
       stop: function( event, ui ) {
         $('.entrance-sound').get(0).play();
       }
@@ -154,6 +155,9 @@ $(function domReady() {
             // console.log("ON CARD SAVE renderHeight: ", renderHeight);
           }
         });
+      }
+      if (card.monsters[i].height && card._id === cardId) {
+        $('.entrance-sound').get(0).play();
       }
     }
   });
