@@ -35,17 +35,9 @@ $(function domReady() {
       var cardId = $('.draggable:first .monster').data("card-id");
       var docHeight = $(document).height();
       var docWidth = $(document).width();
-      var newBackground = card.background;
-
-      if (card.background && card._id === cardId) {
-        $('.background').css({
-          'background': 'url(../images/backgrounds/' + newBackground + '.png)',
-          'background-size': '100% 100%',
-          'background-repeat': 'no-repeat'
-        });
-      }
 
       if (card) {
+        var newBackground = card.background;
         for (var i = 0; i < card.monsters.length; i++) {
           if (card.monsters[i].top && card._id === cardId || card.monsters[i].height && card._id === cardId) {
             $('.monster').each(function(index, element){
@@ -84,6 +76,14 @@ $(function domReady() {
                 bubbleTemplate = bubbleTemplate(messageObj);
                 $(element).parent().prev().html(bubbleTemplate);
               }
+            });
+          }
+
+          if (card.background && card._id === cardId) {
+            $('.background').css({
+              'background': 'url(../images/backgrounds/' + newBackground + '.png)',
+              'background-size': '100% 100%',
+              'background-repeat': 'no-repeat'
             });
           }
         }
