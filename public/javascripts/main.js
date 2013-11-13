@@ -3,19 +3,19 @@ var socket = io.connect();
 $(function domReady() {
 
   var convertToAbsoluteTop = function(docHeight, topPercent) {
-    return (docHeight * topPercent) / 100;
+    return docHeight * (topPercent / 100);
   };
 
   var convertToAbsoluteLeft = function(docWidth, leftPercent) {
-    return (docWidth * leftPercent) / 100;
+    return docWidth * (leftPercent / 100);
   };
 
   var convertToAbsoluteWidth = function(docWidth, widthPercent) {
-    return (docWidth * widthPercent) / 100;
+    return docWidth * (widthPercent / 100);
   };
 
   var convertToAbsoluteHeight = function(docHeight, heightPercent) {
-    return (docHeight * heightPercent) / 100;
+    return docHeight * (heightPercent / 100);
   };
 
   // CREATING A NEW CARD
@@ -35,8 +35,8 @@ $(function domReady() {
     socket.on('cardLoaded', function(card){
       // console.log(card);
       var cardId = $('.draggable:first .monster').data("card-id");
-      var docHeight = $(document).height();
-      var docWidth = $(document).width();
+      var docHeight = $('.background').height();
+      var docWidth = $('.background').width();
 
       if (card) {
         var newBackground = card.background;
@@ -44,7 +44,7 @@ $(function domReady() {
           if (card.monsters[i].top && card._id === cardId || card.monsters[i].height && card._id === cardId) {
             $('.monster').each(function(index, element){
               // element = this (monster img)
-              if (index === card.monsters[i].monsterId) {
+              if ($(this).data('id') === card.monsters[i].monsterId) {
                 var renderTop = convertToAbsoluteTop(docHeight, card.monsters[i].top);
                 var renderLeft = convertToAbsoluteLeft(docWidth, card.monsters[i].left);
                 var renderWidth = convertToAbsoluteWidth(docWidth, card.monsters[i].width);
@@ -52,6 +52,8 @@ $(function domReady() {
                 // console.log("monster width: ", card.monsters[i].width);
                 // console.log("monster height: ", card.monsters[i].height);
 
+                var draggableDiv = $(element).parents(".draggable").detach();
+                $('.background').append(draggableDiv);
                 $(element).parents(".draggable").css({"position": "absolute", "top": renderTop + "px", "left": renderLeft + "px"});
                 $(element).height(renderHeight);
                 $(element).width(renderWidth);
@@ -69,7 +71,7 @@ $(function domReady() {
             $('.monster').each(function(index, element){
               // element = this (monster img)
 
-              if (index === card.monsters[i].monsterId) {
+              if ($(this).data('id') === card.monsters[i].monsterId) {
                 var source = $("#speech-bubble").html();
                 var bubbleTemplate = Handlebars.compile (source);
                 var messageObj = {
@@ -95,22 +97,30 @@ $(function domReady() {
     // GETTING POSITION OF A MONSTER WHILE DRAGGING
     $(".draggable").draggable({
       scroll: true,
-      // containment: "window",
+      containment: "window",
+      // appendTo: ".background",
       start: function( event, ui) {
         $(this).find(".monster").removeClass('jiggly');
       },
       drag: function( event, ui ) {
-        var top = ui.offset.top;
-        var left = ui.offset.left;
-        var docHeight = $(document).height();
-        var docWidth = $(document).width();
-        var topPercent = (top / docHeight) * 100;
-        var leftPercent = (left / docWidth) * 100;
+        var top = ui.position.top;
+        var left = ui.position.left;
+        var docHeight = $('.background').height();
+        var docWidth = $('.background').width();
         // console.log("dragged top: ", top);
         // console.log("dragged left: ", left);
         // console.log("dragged top%: ", topPercent);
         // console.log("dragged left%: ", leftPercent);
 
+        if (!$(this).parent().is('.background')) {
+          top = $(this).offset().top - 12;
+          top -= $('.background').offset().top;
+          left = $(this).offset().left - 12;
+          left -= $('.background').offset().left;
+        }
+
+        var topPercent = (top / docHeight) * 100;
+        var leftPercent = (left / docWidth) * 100;
         var monsterId = $(this).find(".monster").data("id");
         var cardId = $(this).find(".monster").data("card-id");
 
@@ -120,7 +130,6 @@ $(function domReady() {
           top: topPercent,
           left: leftPercent
         };
-
         // console.log("draggedMonster: ", draggedMonster);
         socket.emit("draggedMonster", draggedMonster);
       },
@@ -134,14 +143,14 @@ $(function domReady() {
   // RE-RENDERING MONSTER LOCATION WHENEVER IT'S MOVED
   socket.on('cardSaved', function(card){
     var cardId = $('.draggable:first .monster').data("card-id");
-    var docHeight = $(document).height();
-    var docWidth = $(document).width();
+    var docHeight = $('.background').height();
+    var docWidth = $('.background').width();
 
     for (var i = 0; i < card.monsters.length; i++) {
       if (card.monsters[i].top && card._id === cardId || card.monsters[i].height && card._id === cardId || card.monsters[i].speechBubble && card._id === cardId) {
         $('.monster').each(function(index, element){
           // element = this (monster img)
-          if (index === card.monsters[i].monsterId) {
+          if ($(this).data('id') === card.monsters[i].monsterId) {
             var renderTop = convertToAbsoluteTop(docHeight, card.monsters[i].top);
             var renderLeft = convertToAbsoluteLeft(docWidth, card.monsters[i].left);
             var renderWidth = convertToAbsoluteWidth(docWidth, card.monsters[i].width);
@@ -151,6 +160,11 @@ $(function domReady() {
             $(element).width(renderWidth);
             $(element).parent().css({"height": renderHeight + "px", "width": renderWidth + "px"});
             $(element).removeClass('jiggly');
+
+            if (!$(this).closest('.draggable').parent().is('.background')) {
+              var draggableDiv = $(element).parents(".draggable").detach();
+              $('.background').append(draggableDiv);
+            }
             // console.log("ON CARD SAVE renderTop: ", renderTop);
             // console.log("ON CARD SAVE renderLeft: ", renderLeft);
             // console.log("ON CARD SAVE renderWidth: ", renderWidth);
@@ -172,7 +186,7 @@ $(function domReady() {
       if (card.monsters[i].speechBubble && card._id === cardId) {
         $('.monster').each(function(index, element){
           // element = this (monster img)
-          if (index === card.monsters[i].monsterId) {
+          if ($(this).data('id') === card.monsters[i].monsterId) {
             var source = $("#speech-bubble").html();
             var bubbleTemplate = Handlebars.compile (source);
             var messageObj = {
@@ -192,8 +206,8 @@ $(function domReady() {
     resize: function( event, ui ) {
       var width = ui.size.width;
       var height = ui.size.height;
-      var docWidth = $(document).width();
-      var docHeight = $(document).height();
+      var docWidth = $('.background').width();
+      var docHeight = $('.background').height();
       var widthPercent = (width / docWidth) * 100;
       var heightPercent = (height / docHeight) * 100;
       var $monsterImg = $(this).find(".monster");
@@ -204,9 +218,6 @@ $(function domReady() {
       // console.log("docHeight: ", docHeight);
       // console.log("resized widthPercent: ", widthPercent);
       // console.log("resized heightPercent: ", heightPercent);
-
-      // $monsterImg.parent().css({"position": "absolute", "top": 0, "left": 0});
-
       var cardId = $monsterImg.data("card-id");
       var resizedMonster = {
         id: cardId,
@@ -219,15 +230,8 @@ $(function domReady() {
     }
   });
 
-  // $(".background").droppable({
-  //   drop: function() {
-  //   }
-  // });
-
   // ADDING SPEECH BUBBLES
   $(".draggable").dblclick(function(e) {
-    // console.log(e);
-    // console.log($(this));
     var $monsterImg = $(e.target);
 
     // $(this) = draggable div
@@ -269,7 +273,10 @@ $(function domReady() {
     $(".message").blur(function() {
       $el = $(this); // This is the textarea
       var message = $el.val();
-      $el.parent().parent().text(message);
+
+      if (message !== "") {
+        $el.parent().parent().text(message);
+      }
     });
 
   }); // END OF ADDING A SPEECH BUBBLE
