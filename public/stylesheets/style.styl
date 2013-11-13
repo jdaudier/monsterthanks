@@ -121,13 +121,13 @@ footer
   CARD
   -------------------------------------------------- */
 
-.down-arrow
-  font-size .9em
-  color green
-  margin-left 40px
 
-.down-arrow:hover
-  color light-green
+
+
+.dropzone
+  padding 20px 40px 40px
+  background #34495E
+  text-align center
 
 .header
   font-family 'Londrina Sketch', cursive
@@ -149,10 +149,22 @@ footer
   margin 0 30px
   font-size 1.4em
 
-.dropzone
-  padding 20px 40px 40px
-  background #34495E
-  text-align center
+.recipient
+  margin-left 15px
+
+.down-arrow
+  font-size .9em
+  color green
+  margin-left 15px
+
+.down-arrow:hover
+  color light-green
+
+.background
+  border-radius 6px
+  border 6px solid white
+  position relative
+  min-height 1024px
 
 #right-arrow, #left-arrow
   font-size 3em
@@ -174,12 +186,6 @@ footer
 #left-arrow
   float left
   margin-left 15px
-
-.background
-  border-radius 6px
-  border 6px solid white
-  position relative
-  min-height 1024px
 
 #closet
   background white
@@ -334,6 +340,38 @@ footer
 
 .attn-text
   color green
+
+.recipient-input
+  margin-top 2px
+  margin-bottom 22px
+  height 50px
+
+.recipient-input::-webkit-input-placeholder
+  color green
+  font-size 1em
+  word-spacing 2px
+  letter-spacing 1px
+
+.recipient-input::-moz-placeholder
+  color green
+  font-size 1em
+  word-spacing 2px
+  letter-spacing 1px
+
+.recipient-input:-moz-placeholder
+  color green
+  font-size 1em
+  word-spacing 2px
+  letter-spacing 1px
+
+.recipient-input:-ms-input-placeholder
+  color green
+  font-size 1em
+  word-spacing 2px
+  letter-spacing 1px
+
+input[type="text"]
+  font-size 1.3em
 
 .close-modal-btn
   text-transform uppercase

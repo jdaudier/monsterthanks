@@ -16,6 +16,7 @@ var Monster = mongoose.model('Monster', monsterSchema);
 
 var cardSchema = new Schema({
   monsters: {type: [monsterSchema], default: []},
+  recipient: String,
   background: {type: String, default: "backyard"},
   createdAt: {
     type: Date,

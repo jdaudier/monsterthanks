@@ -227,6 +227,21 @@ io.sockets.on('connection', function(socket) {
     });
   });
 
+  socket.on('recipientEntered', function(recipient) {
+
+    Card.findOne({_id: recipient.id}, function(err, card){
+      card.recipient = recipient.name;
+      card.save(function (err, card) {
+        if (err) {
+          res.send(500, "Recipient is NOT saved");
+        }
+        else {
+          socket.emit('cardLoaded', card);
+        }
+      });
+    });
+  });
+
 
 
 

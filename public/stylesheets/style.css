@@ -164,16 +164,11 @@ footer {
   CARD
   -------------------------------------------------- */
 
-/* line 123 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
-.down-arrow {
-  font-size: 0.9em;
-  color: #09b39c;
-  margin-left: 40px;
-}
-
-/* line 128 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
-.down-arrow:hover {
-  color: #0acbb1;
+/* line 126 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+.dropzone {
+  padding: 20px 40px 40px;
+  background: #34495e;
+  text-align: center;
 }
 
 /* line 131 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
@@ -201,13 +196,31 @@ footer {
 }
 
 /* line 151 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
-.dropzone {
-  padding: 20px 40px 40px;
-  background: #34495e;
-  text-align: center;
+.recipient {
+  margin-left: 15px;
 }
 
-/* line 156 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 154 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+.down-arrow {
+  font-size: 0.9em;
+  color: #09b39c;
+  margin-left: 15px;
+}
+
+/* line 159 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+.down-arrow:hover {
+  color: #0acbb1;
+}
+
+/* line 162 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+.background {
+  border-radius: 6px;
+  border: 6px solid #fff;
+  position: relative;
+  min-height: 1024px;
+}
+
+/* line 168 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 #right-arrow,
 #left-arrow {
   font-size: 3em;
@@ -217,43 +230,35 @@ footer {
   z-index: 3;
 }
 
-/* line 163 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 175 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 #right-arrow:hover {
   color: #9e9e9e;
 }
 
-/* line 166 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 178 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 #left-arrow:hover {
   color: #9e9e9e;
 }
 
-/* line 169 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 181 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 #right-arrow {
   float: right;
   margin-right: 15px;
 }
 
-/* line 173 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 185 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 #left-arrow {
   float: left;
   margin-left: 15px;
 }
 
-/* line 177 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
-.background {
-  border-radius: 6px;
-  border: 6px solid #fff;
-  position: relative;
-  min-height: 1024px;
-}
-
-/* line 183 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 189 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 #closet {
   background: #fff;
   padding: 40px;
 }
 
-/* line 187 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 193 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .monster-container {
   background: #e8e8e8;
   border-radius: 6px;
@@ -262,7 +267,7 @@ footer {
   text-align: center;
 }
 
-/* line 194 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 200 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .closet-header {
   font-family: 'Londrina Sketch', cursive;
   color: #089b87;
@@ -271,7 +276,7 @@ footer {
   display: inline-block;
 }
 
-/* line 201 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 207 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .draggable {
   display: inline-block;
   margin: 10px;
@@ -279,19 +284,19 @@ footer {
   height: 100px;
 }
 
-/* line 207 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 213 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .monster {
   cursor: move;
   width: 100px;
   height: 100px;
 }
 
-/* line 215 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 221 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .monster:hover {
   border: 2px dashed #fff;
 }
 
-/* line 218 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 224 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .bubble {
   cursor: move;
   display: inline-block;
@@ -304,7 +309,7 @@ footer {
   z-index: 2;
 }
 
-/* line 228 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 234 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .bubble:after {
   content: "";
   position: absolute;
@@ -318,18 +323,18 @@ footer {
   z-index: 1;
 }
 
-/* line 240 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 246 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .bubble:hover {
   border: 2px dashed #9e9e9e;
 }
 
-/* line 243 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 249 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .editable-bubble,
 .old-bubble {
   margin-bottom: 30px;
 }
 
-/* line 246 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 252 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .jiggly {
   -webkit-animation: jiggle 0.2s infinite;
   -moz-animation: jiggle 0.2s infinite;
@@ -337,7 +342,7 @@ footer {
   -moz-transform: rotate(-1deg);
 }
 
-/* line 252 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 258 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 @-webkit-keyframes jiggle {
   0% {
     -webkit-transform: rotate(-1deg);
@@ -348,7 +353,7 @@ footer {
   }
 }
 
-/* line 258 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 264 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 @-moz-keyframes jiggle {
   0% {
     -moz-transform: rotate(-1deg);
@@ -359,40 +364,40 @@ footer {
   }
 }
 
-/* line 264 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 270 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .bouncing-arrow {
   -webkit-animation: bounce 1s infinite;
   animation: bounce 1s infinite;
 }
 
-/* line 276 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 282 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .bouncing-left-arrow {
   -webkit-animation: nav-bounce-left 1s infinite;
   animation: nav-bounce-left 1s infinite;
 }
 
-/* line 288 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 294 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .bouncing-right-arrow {
   -webkit-animation: nav-bounce-right 1s infinite;
   animation: nav-bounce-right 1s infinite;
 }
 
-/* line 300 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 306 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 /*  --------------------------------------------------
   MODAL
   -------------------------------------------------- */
 
-/* line 304 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 310 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .modal-content {
   width: 680px;
 }
 
-/* line 307 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 313 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .modal-body {
   padding-bottom: 1px;
 }
 
-/* line 310 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 316 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .modal-title {
   font-family: 'Londrina Sketch', cursive;
   font-size: 4em;
@@ -402,7 +407,7 @@ footer {
   display: inline-block;
 }
 
-/* line 318 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 324 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .step-monster {
   width: 70px;
   height: 70px;
@@ -410,7 +415,7 @@ footer {
   vertical-align: text-bottom;
 }
 
-/* line 324 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 330 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .steps li {
   font-size: 1.3em;
   margin-bottom: 17px;
@@ -418,19 +423,63 @@ footer {
   letter-spacing: 1px;
 }
 
-/* line 330 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 336 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .small-left-arrow,
 .small-right-arrow {
   color: #09b39c;
   margin: 0 7px;
 }
 
-/* line 334 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 340 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .attn-text {
   color: #09b39c;
 }
 
-/* line 337 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 343 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+.recipient-input {
+  margin-top: 2px;
+  margin-bottom: 22px;
+  height: 50px;
+}
+
+/* line 348 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+.recipient-input::-webkit-input-placeholder {
+  color: #09b39c;
+  font-size: 1em;
+  word-spacing: 2px;
+  letter-spacing: 1px;
+}
+
+/* line 354 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+.recipient-input::-moz-placeholder {
+  color: #09b39c;
+  font-size: 1em;
+  word-spacing: 2px;
+  letter-spacing: 1px;
+}
+
+/* line 360 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+.recipient-input:-moz-placeholder {
+  color: #09b39c;
+  font-size: 1em;
+  word-spacing: 2px;
+  letter-spacing: 1px;
+}
+
+/* line 366 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+.recipient-input:-ms-input-placeholder {
+  color: #09b39c;
+  font-size: 1em;
+  word-spacing: 2px;
+  letter-spacing: 1px;
+}
+
+/* line 372 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+input[type="text"] {
+  font-size: 1.3em;
+}
+
+/* line 375 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .close-modal-btn {
   text-transform: uppercase;
   background-color: #09b39c;
@@ -442,13 +491,13 @@ footer {
   padding: 12px 20px;
 }
 
-/* line 347 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 385 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .close-modal-btn:hover {
   background-color: #0acbb1;
   border-color: #09b39c;
 }
 
-/* line 268 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
+/* line 274 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @-moz-keyframes bounce {
   0% {
     top: 0;
@@ -463,7 +512,7 @@ footer {
   }
 }
 
-/* line 268 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
+/* line 274 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @-webkit-keyframes bounce {
   0% {
     top: 0;
@@ -478,7 +527,7 @@ footer {
   }
 }
 
-/* line 268 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
+/* line 274 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @-o-keyframes bounce {
   0% {
     top: 0;
@@ -493,7 +542,7 @@ footer {
   }
 }
 
-/* line 268 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
+/* line 274 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @-ms-keyframes bounce {
   0% {
     top: 0;
@@ -508,7 +557,7 @@ footer {
   }
 }
 
-/* line 268 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
+/* line 274 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @keyframes bounce {
   0% {
     top: 0;
@@ -523,7 +572,7 @@ footer {
   }
 }
 
-/* line 280 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
+/* line 286 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @-moz-keyframes nav-bounce-left {
   0% {
     left: 0;
@@ -538,7 +587,7 @@ footer {
   }
 }
 
-/* line 280 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
+/* line 286 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @-webkit-keyframes nav-bounce-left {
   0% {
     left: 0;
@@ -553,7 +602,7 @@ footer {
   }
 }
 
-/* line 280 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
+/* line 286 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @-o-keyframes nav-bounce-left {
   0% {
     left: 0;
@@ -568,7 +617,7 @@ footer {
   }
 }
 
-/* line 280 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
+/* line 286 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @-ms-keyframes nav-bounce-left {
   0% {
     left: 0;
@@ -583,7 +632,7 @@ footer {
   }
 }
 
-/* line 280 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
+/* line 286 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @keyframes nav-bounce-left {
   0% {
     left: 0;
@@ -598,7 +647,7 @@ footer {
   }
 }
 
-/* line 292 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
+/* line 298 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @-moz-keyframes nav-bounce-right {
   0% {
     right: 0;
@@ -613,7 +662,7 @@ footer {
   }
 }
 
-/* line 292 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
+/* line 298 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @-webkit-keyframes nav-bounce-right {
   0% {
     right: 0;
@@ -628,7 +677,7 @@ footer {
   }
 }
 
-/* line 292 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
+/* line 298 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @-o-keyframes nav-bounce-right {
   0% {
     right: 0;
@@ -643,7 +692,7 @@ footer {
   }
 }
 
-/* line 292 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
+/* line 298 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @-ms-keyframes nav-bounce-right {
   0% {
     right: 0;
@@ -658,7 +707,7 @@ footer {
   }
 }
 
-/* line 292 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
+/* line 298 : /Applications/LiveReload.app/Contents/Resources/Stylus.lrplugin/node_modules/stylus/lib/functions/index.styl */
 @keyframes nav-bounce-right {
   0% {
     right: 0;

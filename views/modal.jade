@@ -37,4 +37,6 @@
                 span.attn-text Send the link
                 |  to the recipient. Have fun!
           .modal-footer
-            button.btn.btn-primary.close-modal-btn(type='button', data-dismiss='modal') start thanking
+            form(role='form')
+              input.form-control.recipient-input(type='text', placeholder='Enter recipient\'s first name')
+              input.btn.btn-primary.close-modal-btn(type='button', data-dismiss='modal', value='start-thanking')

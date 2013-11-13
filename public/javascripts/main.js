@@ -40,6 +40,8 @@ $(function domReady() {
 
       if (card) {
         var newBackground = card.background;
+        var recipient = card.recipient;
+
         for (var i = 0; i < card.monsters.length; i++) {
           if (card.monsters[i].top && card._id === cardId || card.monsters[i].height && card._id === cardId) {
             $('.monster').each(function(index, element){
@@ -90,6 +92,46 @@ $(function domReady() {
               'background-repeat': 'no-repeat'
             });
           }
+        }
+
+        if (card.recipient) {
+          $('.recipient').text(recipient);
+          $('.recipient-input').hide();
+        }
+
+        // GETTING RECIPIENT NAME
+        var capitalizeFirstLetter = function(recipient) {
+          return recipient.charAt(0).toUpperCase() + recipient.slice(1);
+        };
+
+        $('form').submit(function(e) {
+          e.preventDefault();
+        });
+
+        if (!card.recipient) {
+          $('.recipient-input').on('keyup', function(e) {
+            $el = $(this);
+            if(e.which === 13) {
+              var recipientName = $(this).val();
+              recipientName = capitalizeFirstLetter(recipientName);
+              var recipient = {
+                id: cardId,
+                name: recipientName
+              };
+              socket.emit("recipientEntered", recipient);
+              $('.close-modal-btn').trigger('click');
+            }
+          });
+
+          $('.close-modal-btn').click(function(e){
+            var recipientName = $(this).prev().val();
+            recipientName = capitalizeFirstLetter(recipientName);
+            var recipient = {
+              id: cardId,
+              name: recipientName
+            };
+            socket.emit("recipientEntered", recipient);
+          });
         }
       }
     });
@@ -380,6 +422,7 @@ $(function domReady() {
       });
     }
   });
+
 
 
 
