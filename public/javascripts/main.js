@@ -127,7 +127,15 @@ $(function domReady() {
           });
 
           $('.close-modal-btn').click(function(e){
-            var recipientName = $(this).prev().val();
+            var $inputField = $(this).prev();
+            var recipientName = $inputField.val();
+
+            if (recipientName === ''){
+              $inputField.addClass('recipient-input-error');
+              // $(this).parents('#myModal').modal({backdrop: 'static'});
+              $('#myModal').off();
+            }
+
             recipientName = capitalizeFirstLetter(recipientName);
             var recipient = {
               id: cardId,

@@ -345,6 +345,18 @@ footer {
   word-spacing: 2px;
   letter-spacing: 1px;
 }
+.recipient-input-error::-webkit-input-placeholder {
+  color: #b94a48;
+}
+.recipient-input-error::-moz-placeholder {
+  color: #b94a48;
+}
+.recipient-input-error:-moz-placeholder {
+  color: #b94a48;
+}
+.recipient-input-error:-ms-input-placeholder {
+  color: #b94a48;
+}
 input[type="text"] {
   font-size: 1.3em;
 }
