@@ -10,7 +10,7 @@ Monster Thanks is an interactive group thank you card that enables _real-time_ c
 1. Start a card
 2. Drag a monster from the closet.
 3. Drop it on the card background above.
-4. Click ![left arrow](http://goo.gl/zFQ7si) or ![right arrow](http://goo.gl/pwyyH6) to change the background.
+4. Click ![left arrow](http://goo.gl/tfDmR0) or ![right arrow](http://goo.gl/pwyyH6) to change the background.
 5. Resize a monster by dragging the handle on its bottom right.
 6. Double click on a monster to activate the speech bubble.
 7. Write your thank you message.
