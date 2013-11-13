@@ -1,17 +1,22 @@
 # Monster Thanks
 
+### Live site: [monsterthanks.com](http://monsterthanks.com)
+
 ### Description:
-Monster Thanks is an interactive thank you card that enables _real-time_ collaboration among multiple participants.
+Monster Thanks is an interactive group thank you card that enables _real-time_ collaboration among multiple participants.
 
 ![Monster Thanks](https://dl.dropboxusercontent.com/u/125982/monster-thanks-screenshot.png)
 ### Steps:
 1. Start a card
-2. Share the link with all your friends
-3. Choose your background
-4. Choose a monster and drag it to the card
-5. Add a speech bubble next to your monster (double click on the speech bubble to edit it)
-6. Other recipients of the link can come and add their own monster
-7. Send the link to the recipient
+2. Drag a monster from the closet.
+3. Drop it on the card background above.
+4. Click ![left arrow](http://goo.gl/79RaXu) or ![right arrow](http://goo.gl/RvU952) to change the background.
+5. Resize a monster by dragging the handle on its bottom right.
+6. Double click on a monster to activate the speech bubble.
+7. Write your thank you message.
+8. Double click on the speech bubble if you need to edit it.
+9. Share the link with friends so everyone can write on the card.
+10. Send the link to the recipient. Have fun!
 
 ### Client-Side
 * jQuery
@@ -31,7 +36,6 @@ Monster Thanks is an interactive thank you card that enables _real-time_ collabo
 ### Bonus (if I have time)
 * Recipient has a different view
 * Ability to change out the font style for "A monster thanks from all of us" header message
-* Dynamically inserting recipient's first name in header message
 * Copy link feature (like GitHub)
 * Send email with link to other participants
 * Send email with link to recipient
