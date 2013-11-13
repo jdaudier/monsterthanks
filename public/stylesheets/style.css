@@ -514,7 +514,10 @@ input[type="text"] {
 /* line 398 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .close-modal-btn:hover,
 .close-modal-btn:active,
-.close-modal-btn:focus {
+.close-modal-btn:focus,
+.action-btn:hover,
+.action-btn:active,
+.action-btn:focus {
   background-color: #0acbb1;
   border-color: #09b39c;
 }
