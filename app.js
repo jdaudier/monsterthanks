@@ -60,7 +60,7 @@ app.get('/new', function(req, res){
   }
 
   var id = card._id;
-  var path = '/edit/' + id;
+  var path = '/' + id;
   //Save the Card document
   card.save(function(err){
     if (err) {
@@ -72,7 +72,7 @@ app.get('/new', function(req, res){
   });
 });
 
-app.get('/edit/:id', function(req, res) {
+app.get('/:id', function(req, res) {
   Card.findOne({_id: req.params.id}, function(err, card){
     res.render('card', card);
   });
