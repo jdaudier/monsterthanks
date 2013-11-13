@@ -387,9 +387,18 @@ footer {
   color: #09b39c;
   word-spacing: 2px;
   letter-spacing: 1px;
+  display: inline-block;
 }
 
-/* line 293 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 294 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+.step-monster {
+  width: 70px;
+  height: 70px;
+  margin-left: 10px;
+  vertical-align: text-bottom;
+}
+
+/* line 300 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .steps li {
   font-size: 1.3em;
   margin-bottom: 17px;
@@ -397,19 +406,19 @@ footer {
   letter-spacing: 1px;
 }
 
-/* line 299 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 306 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .small-left-arrow,
 .small-right-arrow {
   color: #09b39c;
   margin: 0 7px;
 }
 
-/* line 303 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 310 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .attn-text {
   color: #09b39c;
 }
 
-/* line 306 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 313 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .close-modal-btn {
   text-transform: uppercase;
   background-color: #09b39c;
@@ -421,7 +430,7 @@ footer {
   padding: 12px 20px;
 }
 
-/* line 316 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
+/* line 323 : /Users/ru-005/Projects/refactoru/monsterthanks/public/stylesheets/style.styl */
 .close-modal-btn:hover {
   background-color: #0acbb1;
   border-color: #09b39c;
