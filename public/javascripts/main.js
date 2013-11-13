@@ -131,9 +131,8 @@ $(function domReady() {
             var recipientName = $inputField.val();
 
             if (recipientName === ''){
-              $inputField.addClass('recipient-input-error');
-              // $(this).parents('#myModal').modal({backdrop: 'static'});
-              $('#myModal').off();
+              $inputField.addClass('recipient-input-error animated flash');
+              return false
             }
 
             recipientName = capitalizeFirstLetter(recipientName);
