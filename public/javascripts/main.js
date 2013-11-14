@@ -199,7 +199,7 @@ $(function domReady() {
     var docWidth = $('.background').width();
 
     for (var i = 0; i < card.monsters.length; i++){
-      if (card.monsters[i].top && card._id === cardId || card.monsters[i].height && card._id === cardId || card.monsters[i].speechBubble && card._id === cardId) {
+      if (card.monsters[i].top && card._id === cardId || card.monsters[i].height && card._id === cardId) {
         $('.monster').each(function(index, element){
           // element = this (monster img)
           if ($(this).data('id') === card.monsters[i].monsterId) {
@@ -217,10 +217,6 @@ $(function domReady() {
               var draggableDiv = $(element).parents(".draggable").detach();
               $('.background').append(draggableDiv);
             }
-            // console.log("ON CARD SAVE renderTop: ", renderTop);
-            // console.log("ON CARD SAVE renderLeft: ", renderLeft);
-            // console.log("ON CARD SAVE renderWidth: ", renderWidth);
-            // console.log("ON CARD SAVE renderHeight: ", renderHeight);
           }
         });
       }
@@ -238,11 +234,11 @@ $(function domReady() {
       if (card.monsters[i].speechBubble && card._id === cardId){
         $('.monster').each(function(index, element){
           // element = this (monster img)
-          if ($(this).closest('.draggable').hasClass('writing')){
-            return false;
-          }
+          // if ($(this).closest('.draggable').hasClass('writing')){
+          //   return false;
+          // }
 
-          if ($(this).data('id') === card.monsters[i].monsterId){
+          if ($(this).data('id') === card.monsters[i].monsterId && !$(this).closest('.draggable').hasClass('writing')){
             var source = $("#speech-bubble").html();
             var bubbleTemplate = Handlebars.compile (source);
             var messageObj = {
@@ -267,14 +263,8 @@ $(function domReady() {
       var widthPercent = (width / docWidth) * 100;
       var heightPercent = (height / docHeight) * 100;
       var $monsterImg = $(this).find(".monster");
-      var monsterId = $monsterImg.data("id");
-      // console.log("resized width: ", width);
-      // console.log("resized height: ",height);
-      // console.log("docWidth: ", docWidth);
-      // console.log("docHeight: ", docHeight);
-      // console.log("resized widthPercent: ", widthPercent);
-      // console.log("resized heightPercent: ", heightPercent);
       var cardId = $monsterImg.data("card-id");
+      var monsterId = $monsterImg.data("id");
       var resizedMonster = {
         id: cardId,
         monsterId: monsterId,
