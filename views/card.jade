@@ -27,6 +27,11 @@ block content
           .draggable
             .bubble-container
             img.monster.jiggly(src='/images/monsters/monster' + monster.monsterId + '.svg', alt='monster' data-id=monster.monsterId, data-card-id=id)
+      .social-sharing
+        a.social-icons-card(target='_blank', href='http://www.facebook.com/sharer/sharer.php?u=http://www.monsterthanks.com')
+          img(src='/images/icons/fb-icon-green.svg')
+        a.social-icons-card.twitter(target='_blank', href='https://twitter.com/intent/tweet?text=Check out this fun, collaborative group thank you card!&url=http://www.monsterthanks.com&via=jdaudier')
+          img(src='/images/icons/twitter-icon-green.svg')
 
     audio.entrance-sound
       source(src='/sounds/monster-entrance.ogg', preload='auto', type='audio/ogg')
