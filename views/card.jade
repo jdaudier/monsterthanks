@@ -11,6 +11,8 @@ block content
         | !
         a#arrow(href='#closet')
           span.glyphicon.glyphicon-download.down-arrow.bouncing-arrow
+        a.share-card(data-toggle='modal' data-target='#sharing-modal')
+          i.fa.fa-share-square-o
       .background
         a#left-arrow
           span.glyphicon.glyphicon-chevron-left.bouncing-left-arrow
@@ -36,3 +38,4 @@ block content
 
     include modal
     include speechbubble.html
+    include sharingmodal

@@ -2,24 +2,24 @@ var socket = io.connect();
 
 $(function domReady() {
 
-  var convertToAbsoluteTop = function(docHeight, topPercent) {
+  var convertToAbsoluteTop = function(docHeight, topPercent){
     return docHeight * (topPercent / 100);
   };
 
-  var convertToAbsoluteLeft = function(docWidth, leftPercent) {
+  var convertToAbsoluteLeft = function(docWidth, leftPercent){
     return docWidth * (leftPercent / 100);
   };
 
-  var convertToAbsoluteWidth = function(docWidth, widthPercent) {
+  var convertToAbsoluteWidth = function(docWidth, widthPercent){
     return docWidth * (widthPercent / 100);
   };
 
-  var convertToAbsoluteHeight = function(docHeight, heightPercent) {
+  var convertToAbsoluteHeight = function(docHeight, heightPercent){
     return docHeight * (heightPercent / 100);
   };
 
   // CREATING A NEW CARD
-  $(".action-btn").click(function(e) {
+  $(".action-btn").click(function(e){
     window.location.href = "/new";
   });
 
@@ -72,11 +72,11 @@ $(function domReady() {
             });
           }
 
-          if (card.monsters[i].speechBubble && card._id === cardId) {
+          if (card.monsters[i].speechBubble && card._id === cardId){
             $('.monster').each(function(index, element){
               // element = this (monster img)
 
-              if ($(this).data('id') === card.monsters[i].monsterId) {
+              if ($(this).data('id') === card.monsters[i].monsterId){
                 var source = $("#speech-bubble").html();
                 var bubbleTemplate = Handlebars.compile (source);
                 var messageObj = {
@@ -88,7 +88,7 @@ $(function domReady() {
             });
           }
 
-          if (card.background && card._id === cardId) {
+          if (card.background && card._id === cardId){
             $('.background').css({
               'background': 'url(../images/backgrounds/' + newBackground + '.png)',
               'background-size': '100% 100%',
@@ -103,18 +103,18 @@ $(function domReady() {
         }
 
         // GETTING RECIPIENT NAME
-        var capitalizeFirstLetter = function(recipient) {
+        var capitalizeFirstLetter = function(recipient){
           return recipient.charAt(0).toUpperCase() + recipient.slice(1);
         };
 
-        $('form').submit(function(e) {
+        $('form').submit(function(e){
           e.preventDefault();
         });
 
         if (!card.recipient) {
-          $('.recipient-input').on('keyup', function(e) {
+          $('.recipient-input').on('keyup', function(e){
             $el = $(this);
-            if(e.which === 13) {
+            if(e.which === 13){
               var recipientName = $(this).val();
               recipientName = capitalizeFirstLetter(recipientName);
               var recipient = {
@@ -151,10 +151,10 @@ $(function domReady() {
       scroll: true,
       containment: "window",
       // appendTo: ".background",
-      start: function( event, ui) {
+      start: function( event, ui){
         $(this).find(".monster").removeClass('jiggly');
       },
-      drag: function( event, ui ) {
+      drag: function( event, ui ){
         var top = ui.position.top;
         var left = ui.position.left;
         var docHeight = $('.background').height();
@@ -164,7 +164,7 @@ $(function domReady() {
         // console.log("dragged top%: ", topPercent);
         // console.log("dragged left%: ", leftPercent);
 
-        if (!$(this).parent().is('.background')) {
+        if (!$(this).parent().is('.background')){
           top = $(this).offset().top - 12;
           top -= $('.background').offset().top;
           left = $(this).offset().left - 12;
@@ -198,7 +198,7 @@ $(function domReady() {
     var docHeight = $('.background').height();
     var docWidth = $('.background').width();
 
-    for (var i = 0; i < card.monsters.length; i++) {
+    for (var i = 0; i < card.monsters.length; i++){
       if (card.monsters[i].top && card._id === cardId || card.monsters[i].height && card._id === cardId || card.monsters[i].speechBubble && card._id === cardId) {
         $('.monster').each(function(index, element){
           // element = this (monster img)
@@ -224,7 +224,7 @@ $(function domReady() {
           }
         });
       }
-      if (card.monsters[i].top && card._id === cardId) {
+      if (card.monsters[i].top && card._id === cardId){
         $('.entrance-sound').get(0).play();
       }
     }
@@ -235,10 +235,14 @@ $(function domReady() {
     var cardId = $('.draggable:first .monster').data("card-id");
 
     for (var i = 0; i < card.monsters.length; i++) {
-      if (card.monsters[i].speechBubble && card._id === cardId) {
+      if (card.monsters[i].speechBubble && card._id === cardId){
         $('.monster').each(function(index, element){
           // element = this (monster img)
-          if ($(this).data('id') === card.monsters[i].monsterId) {
+          if ($(this).closest('.draggable').hasClass('')){
+            return false;
+          }
+
+          if ($(this).data('id') === card.monsters[i].monsterId){
             var source = $("#speech-bubble").html();
             var bubbleTemplate = Handlebars.compile (source);
             var messageObj = {
@@ -255,7 +259,7 @@ $(function domReady() {
 
   // GETTING THE SIZE OF THE MONSTER WHILE THEY'RE RESIZED
   $(".monster").resizable({
-    resize: function( event, ui ) {
+    resize: function( event, ui ){
       var width = ui.size.width;
       var height = ui.size.height;
       var docWidth = $('.background').width();
@@ -283,7 +287,7 @@ $(function domReady() {
   });
 
   // ADDING SPEECH BUBBLES
-  $(".draggable").dblclick(function(e) {
+  $(".draggable").dblclick(function(e){
     var $monsterImg = $(e.target);
 
     // $(this) = draggable div
@@ -303,11 +307,11 @@ $(function domReady() {
     $(this).addClass("has-bubble");
 
     // ADDING TYPING SOUND
-    $('.message').on('keydown', function() {
+    $('.message').on('keydown', function(){
       $('.typing-sound').get(0).play();
     });
 
-    $('.message').on('keyup', function() {
+    $('.message').on('keyup', function(){
       $el = $(this); // This is the textarea
       var message = $el.val();
       var monsterId = $monsterImg.data("id");
@@ -334,7 +338,7 @@ $(function domReady() {
   }); // END OF ADDING A SPEECH BUBBLE
 
   // EDITING A SPEECH BUBBLE
-  $('.bubble-container').dblclick(function(e) {
+  $('.bubble-container').dblclick(function(e){
     // $(this) = .bubble-container div
     var $monsterImg = $(this).parent().find('.monster');
     var $draggableDiv = $(this).parent();
@@ -354,11 +358,11 @@ $(function domReady() {
     $textArea.val(oldMsg);
 
     // ADDING TYPING SOUND
-    $('.message').on('keydown', function() {
+    $('.message').on('keydown', function(){
       $('.typing-sound').get(0).play();
     });
 
-    $('.message').on('keyup', function() {
+    $('.message').on('keyup', function(){
       $el = $(this); // This is the textarea
       var message = $el.val();
       var monsterId = $monsterImg.data("id");
@@ -374,11 +378,11 @@ $(function domReady() {
       socket.emit("messageEntered", messageEntered);
     });
 
-    $(".message").blur(function() {
+    $(".message").blur(function(){
       $el = $(this); // This is the textarea
       var message = $el.val();
 
-      if (message === "") {
+      if (message === ""){
         $el.parent().parent().text(oldMsg);
       }
       else {
@@ -433,9 +437,12 @@ $(function domReady() {
     }
   });
 
-
-
-
+  // SETTING URL WHEN SHARING MODAL IS OPENED
+  $('.share-card').click(function(){
+    var url = document.URL;
+    $('.url').val(url);
+    $('.url').tooltip();
+  });
 
 
 });

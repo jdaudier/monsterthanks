@@ -1,0 +1,10 @@
+#sharing-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='share the link', aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+        h2.modal-title Share this link
+        img.jiggly.step-monster(src='/images/monsters/monster51.svg', alt='monster')
+      .modal-body
+        form(role='form')
+          input.form-control.url(type='text', onclick='this.select();', readonly='readonly', title='Click & press CTRL/⌘ + C to copy')
