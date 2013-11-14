@@ -333,6 +333,7 @@ $(function domReady() {
 
       if (message !== "") {
         $el.parent().parent().text(message);
+        $el.closest('.draggable').removeClass('writing');
       }
     });
 
@@ -382,6 +383,7 @@ $(function domReady() {
     $(".message").blur(function(){
       $el = $(this); // This is the textarea
       var message = $el.val();
+      $el.closest('.draggable').removeClass('writing');
 
       if (message === ""){
         $el.parent().parent().text(oldMsg);
