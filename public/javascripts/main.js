@@ -132,7 +132,7 @@ $(function domReady() {
 
             if (recipientName === ''){
               $inputField.addClass('recipient-input-error animated flash');
-              return false
+              return false;
             }
 
             recipientName = capitalizeFirstLetter(recipientName);
@@ -238,7 +238,7 @@ $(function domReady() {
       if (card.monsters[i].speechBubble && card._id === cardId){
         $('.monster').each(function(index, element){
           // element = this (monster img)
-          if ($(this).closest('.draggable').hasClass('')){
+          if ($(this).closest('.draggable').hasClass('writing')){
             return false;
           }
 
@@ -316,6 +316,7 @@ $(function domReady() {
       var message = $el.val();
       var monsterId = $monsterImg.data("id");
       var cardId = $monsterImg.data("card-id");
+      $el.closest('.draggable').addClass('writing');
 
       var messageEntered = {
         id: cardId,
@@ -367,7 +368,7 @@ $(function domReady() {
       var message = $el.val();
       var monsterId = $monsterImg.data("id");
       var cardId = $monsterImg.data("card-id");
-
+      $el.closest('.draggable').addClass('writing');
       var messageEntered = {
         id: cardId,
         monsterId: monsterId,
