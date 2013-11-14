@@ -34,12 +34,12 @@ Monster Thanks is an interactive group thank you card that enables _real-time_ c
 * Web sockets (Sockets.io)
 
 ### Bonus (if I have time)
+* Ability to delete a monster
 * Recipient has a different view
-* Ability to change out the font style for "A monster thanks from all of us" header message
+* Ability to change out the font style for the header message
 * Copy link feature (like GitHub)
 * Send email with link to other participants
 * Send email with link to recipient
-* Ability to delete a monster
 
 ### Questions:
 1. __SOLVED:__ How do I load the monster (along with the position and message bubble) that someone else has created before me?
