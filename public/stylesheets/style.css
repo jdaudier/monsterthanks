@@ -303,7 +303,7 @@ footer {
   INSTRUCTION MODAL
   -------------------------------------------------- */
 .modal-content {
-  width: 680px;
+  width: 760px;
 }
 .modal-body {
   padding-bottom: 1px;
@@ -329,9 +329,13 @@ footer {
   letter-spacing: 1px;
 }
 .small-left-arrow,
-.small-right-arrow {
+.small-right-arrow,
+.share-card-modal {
   color: #09b39c;
   margin: 0 7px;
+}
+.share-card-modal {
+  font-size: 20px;
 }
 .attn-text {
   color: #09b39c;
