@@ -5,7 +5,8 @@
 ### Description:
 Monster Thanks is an interactive group thank you card that enables _real-time_ collaboration among multiple participants.
 
-![Monster Thanks](https://dl.dropboxusercontent.com/u/125982/monster-thanks-screenshot.png)
+![Monster Thanks](/public/images/screenshot/monster-thanks-screenshot.png)
+
 ### Steps:
 1. Start a card
 2. Drag a monster from the closet.
