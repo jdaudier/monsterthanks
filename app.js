@@ -38,7 +38,7 @@ var io = socketio.listen(server);
 // Mongoose
 //Create to the DB if it doesn't exist and connect to it
 var mongoose = require('mongoose');
-mongoURI = process.env.MONGOHQ_URL || 'mongodb://localhost/monsterthanks';
+mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/monsterthanks';
 mongoose.connect(mongoURI);
 
 //setup our MongoDB Card collection
